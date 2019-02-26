@@ -28,15 +28,6 @@ gem 'slim-rails'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate', '~> 1.0'
 
-# JS用のi18n
-gem 'i18n-js'
-# JS用のフラッシュメッセージ
-gem 'toastr-rails'
-
-# google map
-gem "gmaps4rails"
-gem "geocoder"
-
 #------------- front-end -------------#
 gem 'autosize'
 gem 'bootstrap-sass'
@@ -66,6 +57,48 @@ gem 'rails-assets-tether', '~> 1.4.3', :source => 'https://rails-assets.org/'
 # gem 'therubyracer'
 gem "wysiwyg-rails"
 
+# JS用のi18n
+gem 'i18n-js'
+# JS用のフラッシュメッセージ
+gem 'toastr-rails'
+
+# google map
+gem "gmaps4rails"
+gem "geocoder"
+
+# 複数の入力フォーム作成
+gem 'cocoon'
+
+#------------- database -------------#
+# Use mysql as the database for Active Record
+gem 'mysql2', '>= 0.3.18', '< 0.5'
+
+#- multiple database connection for data migrate --#
+gem 'ruby-mysql'
+gem 'sequel'
+# schemaの情報をファイルの先頭もしくは末尾にコメントをつける
+gem 'annotate'
+# MySQL server has gone away 対策
+gem 'mysql_retry_lost_connection'
+# カラムの要素定義に使用
+gem 'enumerize'
+
+# elasticsearch
+gem 'elasticsearch'
+gem 'elasticsearch-api'
+gem 'elasticsearch-transport'
+gem 'elasticsearch-dsl'
+gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '5.x'
+gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '5.x'
+gem 'redis'
+# elasticsearchのキーワード検索で使用する
+gem 'miyabi'
+
+# 静的データを持てるようにするgem
+gem 'active_hash'
+# 一括処理
+gem 'activerecord-import'
+
 # ~~~~~~~~~~~~~~~~~ authentication ~~~~~~~~~~~~~~~~~#
 gem 'devise'
 gem 'devise-i18n'
@@ -86,6 +119,10 @@ group :development do
   gem 'pry-rails'
 end
 gem 'jp_prefecture'
+
+# ~~~~~~~~~~~~~~~~~ 権限管理 ~~~~~~~~~~~~~~~~~#
+
+gem 'the_role'
 
 #------------- PDF -------------#
 gem 'wicked_pdf' # yum install -y ipa-gothic-fonts で日本語フォントを合わせてインストール

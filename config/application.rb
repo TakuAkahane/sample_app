@@ -32,5 +32,16 @@ module TokyoRealEstateCommunity
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.generators.system_tests = nil
+    config.generators do |g|
+      # レイアウト、テンプレートエンジン系の設定
+      g.javascripts false
+      g.stylesheets false
+      g.template_engine :slim
+      g.test_framework :rspec, view_specs: false, fixture: true
+    end
+
+    # I18nJs
+    config.middleware.use I18n::JS::Middleware
   end
 end
