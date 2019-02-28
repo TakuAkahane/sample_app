@@ -41,6 +41,9 @@ module TokyoRealEstateCommunity
       g.test_framework :rspec, view_specs: false, fixture: true
     end
 
+    # デバッグ用の設定 production環境での設定は不可
+    config.web_console.whitelisted_ips = '192.168.33.1' if Rails.env == 'development'
+
     # I18nJs
     config.middleware.use I18n::JS::Middleware
   end

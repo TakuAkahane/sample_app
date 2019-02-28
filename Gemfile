@@ -3,7 +3,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.3'
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# gem 'rails', '~> 5.2.2'
+# ruby '2.5.3'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
@@ -170,29 +172,8 @@ end
 
 
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.2'
 
 
-
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'mini_racer', platforms: :ruby
-
-# therubyracerは、JavaScriptのエンジンであるv8をRubyから使えるようにするgem
-# 大量にメモリを消費するため、node.jsをインストールする。
-# gem 'therubyracer'
-# 仮想環境上で下記コマンドを実行
-# curl -sL https://rpm.nodesource.com/setup_8.x | bash -
-# yum install -y nodejs gcc-c++ make
-
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
