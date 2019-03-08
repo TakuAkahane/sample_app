@@ -71,6 +71,12 @@ gem "geocoder"
 # 複数の入力フォーム作成
 gem 'cocoon'
 
+# class="active"を動的につけられる
+gem 'active_link_to'
+
+# 都道府県利用メソッド
+gem 'jp_prefecture'
+
 #------------- database -------------#
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
@@ -115,16 +121,15 @@ gem 'activerecord-session_store'
 # soft delete
 gem 'paranoia'
 
+# ~~~~~~~~~~~~~~~~~ 権限管理 ~~~~~~~~~~~~~~~~~#
+
+gem 'the_role'
+
 # Other
 group :development do
   gem 'faker'
   gem 'pry-rails'
 end
-gem 'jp_prefecture'
-
-# ~~~~~~~~~~~~~~~~~ 権限管理 ~~~~~~~~~~~~~~~~~#
-
-gem 'the_role'
 
 #------------- PDF -------------#
 gem 'wicked_pdf' # yum install -y ipa-gothic-fonts で日本語フォントを合わせてインストール
@@ -141,6 +146,16 @@ group :development, :test do
   gem 'pry-alias'
   gem 'pry-byebug'
   gem 'stackprof'
+end
+
+#------------- console -------------#
+group :development do
+  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 #------------- programing tools -------------#
@@ -168,29 +183,3 @@ group :development, :test do
   gem 'rspec-support'
   gem 'bullet'
 end
-
-
-
-
-
-
-
-group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-end
-
-group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
-end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
