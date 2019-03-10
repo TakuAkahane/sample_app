@@ -1,0 +1,37 @@
+.flash_msgs{
+  padding: 10px 10px 0px 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &.alert-info{
+    border: 3px solid #3A87AD;
+    color: #3A87AD;
+
+    p{
+      font-size: 14px;
+      line-height: 130%;
+    }
+  }
+}
+
+.error_explanation.alert-danger{
+  border: 3px solid #B94A48;
+  color: #B94A48;
+
+  padding: 10px 10px 0px 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  ul{
+    margin-left: 15px;
+    padding-bottom: 0.1px;
+    list-style: disc inside none;
+  }
+  li{
+    font-size: 14px;
+    line-height: 130%;
+    margin-bottom: 15px;
+  }
+}

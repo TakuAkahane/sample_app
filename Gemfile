@@ -182,4 +182,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-support'
   gem 'bullet'
+
+#------------- その他 -------------#
+  gem 'bootsnap', '>= 1.1.0', require: false
+  gem 'therubyracer'
 end

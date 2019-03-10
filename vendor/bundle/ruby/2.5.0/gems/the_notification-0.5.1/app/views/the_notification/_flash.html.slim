@@ -1,0 +1,21 @@
+- flash  = self.flash
+- format = (format || TheNotification.config.default_type).to_s
+- flash_types = %w[ notice alert error errors ]
+
+- if format == 'html'
+  - flash_types.each do |level|
+    - msg = flash.try(:[], level) || flash.try(:[], level.to_sym)
+    - if msg.present?
+      .alert.flash_msgs class=flash_class(level)
+        = content_tag :p, msg
+- else
+  - if flash.present?
+    = javascript_tag defer: :defer, type: "text/javascript" do
+      | window.the_notifications = window.the_notifications || {};
+      | window.the_notifications['flash'] = window.the_notifications['flash'] || {};
+
+  - flash_types.each do |level|
+    - msg = flash.try(:[], level) || flash.try(:[], level.to_sym)
+    - if msg.present?
+      = javascript_tag defer: :defer, type: "text/javascript" do
+        | window.the_notifications['flash']['#{ level }'] = '#{ j msg }';
