@@ -206,8 +206,8 @@ GEM
       ruby_parser
     hashie (3.5.7)
     hpricot (0.8.6)
-    hpricot (0.8.6-i386-mswin32)
     hpricot (0.8.6-java)
+    hpricot (0.8.6-x86-mswin32)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
       haml (>= 4.0, < 6)
