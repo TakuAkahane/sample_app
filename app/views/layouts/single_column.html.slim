@@ -1,0 +1,12 @@
+doctype html
+html
+  = render :partial => 'layouts/head'
+
+  body
+    main.pb-3.margin-header
+      .container-fluid.title.py-2.py-md-4
+        = generate_h1tag unless @disable_h1tag
+      .container-fluid.grabiend.pt-5
+        .row
+          .col-sm-12.col-md-10.col-lg-8.mx-auto
+            = yield
