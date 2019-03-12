@@ -10,3 +10,8 @@ html
         .row
           .col-sm-12.col-md-10.col-lg-8.mx-auto
             = yield
+
+  = javascript_include_tag "application"
+  = yield :local_js
+  javascript
+    #{flash_messages}
