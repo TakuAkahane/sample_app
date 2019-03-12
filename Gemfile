@@ -185,5 +185,5 @@ group :development, :test do
 
 #------------- その他 -------------#
   gem 'bootsnap', '>= 1.1.0', require: false
-  gem 'therubyracer'
+  gem 'mini_racer'
 end

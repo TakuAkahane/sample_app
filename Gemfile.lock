@@ -120,7 +120,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.4)
+    concurrent-ruby (1.1.5)
     crass (1.0.4)
     data-confirm-modal (1.6.2)
       railties (>= 3.0)
@@ -244,7 +244,7 @@ GEM
     launchy (2.4.3-java)
       addressable (~> 2.3)
       spoon (~> 0.0.1)
-    libv8 (3.16.14.19)
+    libv8 (6.7.288.46.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -278,6 +278,8 @@ GEM
     mimemagic (0.3.3)
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
+    mini_racer (0.2.4)
+      libv8 (>= 6.3)
     minitest (5.11.3)
     minitest-rails (3.0.0)
       minitest (~> 5.8)
@@ -287,10 +289,10 @@ GEM
     moji (1.6)
     mojimoji (0.1.0)
       moji (~> 1.6)
-    msgpack (1.2.7)
-    msgpack (1.2.7-java)
-    msgpack (1.2.7-x64-mingw32)
-    msgpack (1.2.7-x86-mingw32)
+    msgpack (1.2.8)
+    msgpack (1.2.8-java)
+    msgpack (1.2.8-x64-mingw32)
+    msgpack (1.2.8-x86-mingw32)
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
@@ -412,7 +414,6 @@ GEM
       parser (>= 2.5.0.0, < 2.7, != 2.5.1.1)
       psych (~> 3.1.0)
       rainbow (>= 2.0, < 4.0)
-    ref (2.0.0)
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
@@ -448,7 +449,7 @@ GEM
     ruby_dep (1.5.0)
     ruby_parser (3.12.0)
       sexp_processor (~> 4.9)
-    rubycritic (4.0.0)
+    rubycritic (4.0.1)
       flay (~> 2.8)
       flog (~> 4.4)
       launchy (= 2.4.3)
@@ -525,9 +526,6 @@ GEM
       the_notification (~> 0.5.1)
     the_string_to_slug (1.4)
       rails-i18n (~> 4.0.0.pre)
-    therubyracer (0.12.3)
-      libv8 (~> 3.16.14.15)
-      ref
     thor (0.20.3)
     thread_safe (0.3.6)
     thread_safe (0.3.6-java)
@@ -628,6 +626,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   meta-tags
   meta_request
+  mini_racer
   minitest
   minitest-rails
   miyabi
@@ -667,7 +666,6 @@ DEPENDENCIES
   stackprof
   test-unit
   the_role
-  therubyracer
   toastr-rails
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
