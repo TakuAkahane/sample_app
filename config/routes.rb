@@ -3,4 +3,6 @@
 
 Rails.application.routes.draw do
   get 'my', to: 'my#index'
+
+  resources :buy_residential_properties
 end
