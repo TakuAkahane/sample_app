@@ -1,4 +1,4 @@
-= form_for @new_property, url: buy_residential_properties_url do |f|
+= form_for @new_property, url: buy_residential_properties_url, builder: FormHelper::OriginalFormBuilder do |f|
   .card
     = f.text_field :name
     = f.text_field :address

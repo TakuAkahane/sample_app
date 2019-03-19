@@ -2,7 +2,8 @@
 # frozen_string_literal: true
 
 module FormHelper
-  class OriginalFormBuilder < Action::Helpers::FormBuilder
+  class OriginalFormBuilder < ActionView::Helpers::FormBuilder
+    #---------------------- フィールド構成要素 ----------------------#
     # label_args分解
     def extend_args(args)
       required = args.key?(:required) && args[:required] ? true : false
@@ -26,6 +27,13 @@ module FormHelper
       end
     end
 
+    # フィールドのクラスを作成
+    def line_class(args, default)
+      return default unless args.key?(:line_class)
+
+      args[:line_class]
+    end
+
     # ID生成
     def original_id(attribute)
       suffix = '_field'
@@ -45,13 +53,45 @@ module FormHelper
       "<div class='invalid-feedback' style='display:block'>#{message}></div>".html_safe
     end
 
-    # テキストフィールド
+    # 引数編集
+    def args_edit(attribute, args, readonly)
+      default = { class: 'form-control', autocomplete: 'off' }
+      default[:class] += ' ' + args[:pick_target_class].to_s if args.key?(:pick_target_class)
+      args = args.merge(default).merge(id: original_id(attribute))
+      args = args.merge(readonly: true) if readonly
+      args
+    end
+
+    #---------------------- 各種フィールド ----------------------#
+    # テキストフィールド（form_nameが'blank'の場合、タイトル・項目名非表示）
     def text_field(attribute, label_args = {}, args = {})
       required, form_name, readonly = extend_args(label_args)
       label_class = label_class(label_args, 'mb-3')
-      @template.concat_tag(:div, class: line_class(label_args, 'mx-auto mb-5')) do
+      @template.content_tag(:div, class: line_class(label_args, 'mx-auto mb-5')) do
         @template.concat(
           form_name == 'blank' ? '' : label_for(attribute, required, form_name, label_class, true)
+        )
+        @template.concat(
+          super(attribute, args_edit(attribute, args, readonly))
+        )
+        @template.concat(error_tag(attribute))
+      end
+    end
+
+    # テキストエリア
+    def text_area(attribute, label_args = {}, args = {})
+      required, form_name, readonly = extend_args(label_args)
+      no_label = label_args.key?(:no_label) && label_args[:no_label] ? true : false
+      label_class = label_class(label_args, 'mb-3')
+      @template.content_tag(:div, class: line_class(label_args, 'mx-auto mb-5')) do
+        @template.concat(
+          @template.content_tag(:div, class: '') do
+            unless no_label
+              @template.concat(
+                label_for(attribute, required, form_name, label_class, true)
+              )
+            end
+          end
         )
         @template.concat(
           super(attribute, args_edit(attribute, args, readonly))
