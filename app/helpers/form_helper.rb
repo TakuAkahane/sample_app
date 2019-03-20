@@ -100,5 +100,60 @@ module FormHelper
       end
     end
 
+    # 日時フィールド
+    def datetime_field(attribute, label_args = {}, args = {})
+      label_class = label_class(label_args, 'mb-3')
+      data_value = @object.send(attribute).present? ? { 'data-value' => @object.send(attribute) } : {}
+      @template.content_for :local_js do
+        "<script>
+          $(document).ready(function() {
+            $('#{original_id(attribute)}').pickadate({ onClose: function() { document.activeElement.blur(); } });
+          });
+        </script>".html_safe
+      end
+      required, form_name, readonly = extend_args(label_args)
+      @template.content_tag(:div, class: line_class(label_args, 'mx-auto mb-5')) do
+        @template.concat(
+          form_name == 'blank' ? '' : label_for(attribute, required, form_name, label_class, true)
+        )
+        @template.concat(
+          super(attribute, args_edit(attribute, args, readonly).merge(data_value))
+        )
+        @template.concat(error_tag(attribute))
+      end
+    end
+
+    # Emailフィールド
+    def email_field(attribute, label_args = {}, args = {})
+      required, form_name, readonly = extend_args(label_args)
+      label_class = label_class(label_args, 'mb-3')
+      @template.content_tag(:div, class: line_class(line_args, 'md-form mx-auto')) do
+        @template.concat(
+          label_for(attribute, required, form_name, label_class)
+        )
+        @template.concat(
+          super(attribute, args_edit(attribute, args, readonly))
+        )
+        @template.concat(error_tag(attribute))
+      end
+    end
+
+    # パスワードフィールド
+    def password_field(attribute, label_args = {}, args = {})
+      required, form_name, readonly = extend_args(label_args)
+      label_class = label_class(label_args, 'mb-3')
+      @template.content_tag(:div, class: line_class(line_args, 'md-form mx-auto')) do
+        unless form_name == 'blank'
+          @template.concat(
+            label_for(attribute, required, form_name, label_class)
+          )
+        end
+        @template.concat(
+          super(attribute, args_edit(attribute, args, readonly))
+        )
+        @template.concat(error_tag(attribute))
+      end
+    end
+
   end
 end
