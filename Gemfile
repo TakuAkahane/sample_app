@@ -190,4 +190,8 @@ group :development, :test do
 #------------- その他 -------------#
   gem 'bootsnap', '>= 1.1.0', require: false
   gem 'mini_racer'
+
+#------------- original -------------#
+  # material design for bootstrap pro
+  gem 'trecmdb', path: '../trecmdb'
 end

@@ -9,6 +9,12 @@ GIT
       hashie
     elasticsearch-rails (5.1.0)
 
+PATH
+  remote: ../trecmdb
+  specs:
+    trecmdb (0.1.0)
+      railties
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -666,6 +672,7 @@ DEPENDENCIES
   test-unit
   the_role
   toastr-rails
+  trecmdb!
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
   wicked_pdf
