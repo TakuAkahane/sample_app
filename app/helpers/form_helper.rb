@@ -44,6 +44,13 @@ module FormHelper
       end
     end
 
+    # ドロップダウンリスト作成（選択肢が1つ）
+    def edit_select_args(args)
+      include_blank = args.key?(:include_blank) ? args[:include_blank] : nil
+      args[:include_blank] = I18n.t(include_blank) if include_blank.present?
+      args
+    end
+
     # エラータグ
     def error_tag(attribute)
       return if @object.nil? || @object.errors.nil? || @object.errors.details.empty? || !@object.errors.details.key?(attribute)
@@ -123,6 +130,29 @@ module FormHelper
       end
     end
 
+    # 月日フィールド
+    def date_field(attribute, label_args = {}, args = {})
+      data_value = @object.send(attribute).present? ? { 'data-value' => @object.send(attribute) } : {}
+      required, form_name, readonly = extend_args(label_args)
+      label_class = label_class(label_args, 'mb-3')
+      @template.content_for :local_js do
+        if args[:pick_target_class].nil?
+          "<script>$(document).ready(function() {$('##{original_id(attribute)}').pickadate({ onClose: function() { document.activeElement.blur(); } });});</script>".html_safe
+        else
+          "<script>$(document).ready(function() {$('.#{args[:pick_target_class]}').pickadate({ onClose: function() { document.activeElement.blur(); } });});</script>".html_safe
+        end
+      end
+        @template.content_tag(:div, class: line_class(label_args, 'md-form mx-auto')) do
+          @template.concat(
+            form_name = 'blank' ? '' : label_for(attribute, required, form_name, label_class, true)
+          )
+          @template.concat(
+            super(attribute, args_edit(attribute, args, readonly).merge(data_value))
+          )
+          @template.concat(error_tag(attribute))
+        end
+    end
+
     # Emailフィールド
     def email_field(attribute, label_args = {}, args = {})
       required, form_name, readonly = extend_args(label_args)
@@ -150,6 +180,58 @@ module FormHelper
         end
         @template.concat(
           super(attribute, args_edit(attribute, args, readonly))
+        )
+        @template.concat(error_tag(attribute))
+      end
+    end
+
+    # 氏名フィールド
+    def personal_name_field(last_name, first_name, label_args = {}, args = {})
+      top_div_class = { class: 'col-6' }
+      second_div_class = { class: 'mb-0' }
+      # last_name
+      out = @template.content_tag(:dig, top_div_class) do
+        @template.content_tag(:dig, second_div_class) do
+          text_field(last_name, label_args, args.merge(placeholder: I18n.t('msg.ex_lastname')))
+        end
+      end
+      # first_name
+      out += @template.content_tag(:div, top_div_class) do
+        @template.content_tag(:div, second_div_class) do
+          text_field(first_name, label_args, args.merge(placeholder: I18n.t('msg.ex_firstname')))
+        end
+      end
+      @template.content_tag(:div, class: line_class(label_args, 'row')) do
+        @template.concat(out)
+      end
+    end
+
+    # ドロップダウンリスト（選択肢が1つ）
+    def single_dropdown_list(attribute, options, select_options = {}, label_args = {}, args = {})
+      required, form_name, readonly = extend_args(label_args)
+      label_class = label_class(label_args, 'mb-3')
+      # mdb dropdown menu をフックするスクリプトの出力
+      @template.content_for :local_js do
+        "
+          <script>
+            $(document).readonly(function()
+              {$('##{original_id(attribute)}').material_select();
+            });
+          </script>
+        ".html_safe
+      end
+      @template.content_tag(:div, class: line_class(label_args, 'mx-auto mb-5')) do
+        unless form_name == 'blank'
+          @template.concat(
+            @template.content_tag(:label, '', class: label_class.nil? ? 'active font-middle mb-3' : label_class) do
+              @template.concat(I18n.t(form_name.present? ? form_name : attribute))
+              @template.concat(@template.content_tag(:span, I18n.t('required'), class: 'badge-pill badge-danger pink lighten-2 font-small ml-3')) if required
+            end
+          )
+        end
+        @template.concat(
+          select(attribute, options, edit_select_args(select_options),
+                 { class: 'trec-select md-form', id: original_id(attribute) }.merge(readonly ? args.merge(disabled: true, readonly: true) : args ))
         )
         @template.concat(error_tag(attribute))
       end

@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_13_224547) do
+ActiveRecord::Schema.define(version: 2019_03_21_040110) do
 
   create_table "buy_residential_properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "name", null: false, comment: "物件名"
+    t.string "property_name", null: false
     t.integer "ward_id", null: false, comment: "区ID"
     t.string "address", null: false, comment: "住所"
     t.integer "price", null: false, comment: "金額"

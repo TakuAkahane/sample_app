@@ -1,8 +1,22 @@
 en:
   #---------------------- 単語一覧 ----------------------#
-  name: &name Name
+  property_name: &property_name Property name
   address: &address Address
   price: &price Price
   floore_size: &floore_size Floore Size
   floore_level: &floore_level Floore Level
   completion_date: &completion_date Completion Date
+  confirm: &confirm Confirm
+  required: &required Required
+  unit_apartment: &unit_apartment Apartment(Unit)
+  whole_building_apartment: &whole_building_apartment Apartment(Whole building)
+  house: &house House
+  property_type: &property_type Property Type
+
+  #---------------------- カラム要素定義 ----------------------#
+  enumerize:
+    default:
+      property_type:
+        unit_apartment: *unit_apartment
+        whole_building_apartment: *whole_building_apartment
+        house: *house

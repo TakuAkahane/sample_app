@@ -1,8 +1,30 @@
 = form_for @new_property, url: buy_residential_properties_url, builder: FormHelper::OriginalFormBuilder do |f|
-  .card
-    = f.text_field :name
-    = f.text_field :address
-    = f.text_field :price
-    = f.text_field :floore_size
-    = f.text_field :floore_level
-    = f.text_field :completion_date
+  .card.px-3.px-md-4.form-card.mt-2.pt-5
+    .pl-0.pl-sm-2.border-bottom.mb-5
+      .row.px-3
+        .col-12
+          = f.text_field :property_name
+        .col-12
+          = f.text_field :address
+    .pl-0.pl-sm-2
+      .row.px-3
+        .col-12
+          = f.text_field :price, {required: true}
+        .col-12
+          = f.text_field :floore_size
+      .row.px-3
+        .col-12
+          = f.text_field :floore_level
+        .col-12
+          = f.text_field :completion_date, {required: true}
+      .row.px-3
+        .col-12
+          = f.single_dropdown_list :property_type, BuyResidentialProperty.property_type.options(selected: @new_property.property_type)
+        .col-12
+
+
+
+
+  .row.justify-content-md-center.mt-5
+    .col-12.col-md-4.mt-2
+      = f.button t('confirm'), type: 'submit', class: 'btn btn-deep-orange btn-block btn-lg font-extralarge'
