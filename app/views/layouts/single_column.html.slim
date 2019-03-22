@@ -5,7 +5,7 @@ html
   body
     = render :partial => 'layouts/header'
 
-    / start main contents
+    /! start main contents
     main.pb-3.margin-header
       .container-fluid.title.py-2.py-md-4
         = generate_h1tag unless @disable_h1tag
@@ -13,7 +13,7 @@ html
         .row
           .col-sm-12.col-md-10.col-lg-8.mx-auto
             = yield
-    / end main contents
+    /! end main contents
 
     = render :partial => 'layouts/footer'
 

@@ -17,7 +17,6 @@ class BuyResidentialPropertiesController < ApplicationController
     end
   end
 
-
   def index
   end
 
