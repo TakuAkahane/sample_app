@@ -29,6 +29,7 @@ Rails.application.config.assets.precompile += %w[*.ico *.eot *.woff *.ttf *.svg 
                                                  jquery.matchHeight.js
                                                  selectionDialogControl.js
                                                  message-loader.js
+                                                 message.css
                                                  message.js
                                                  admin_users/*.css
                                                  selectionDialogControl.js
@@ -37,5 +38,6 @@ Rails.application.config.assets.precompile += %w[*.ico *.eot *.woff *.ttf *.svg 
                                                  autosize.js
                                                  ie-shim.js
                                                  font-awesome.css]
+
 Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'font', 'roboto')
 Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf|woff2)\z/

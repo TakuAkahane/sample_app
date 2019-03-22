@@ -16,7 +16,7 @@
         .col-12
           = f.text_field :floore_level
         .col-12
-          = f.text_field :completion_date, {required: true}
+          = f.date_field :completion_date, {required: true}
       .row.px-3
         .col-12
           = f.single_dropdown_list :property_type, BuyResidentialProperty.property_type.options(selected: @new_property.property_type)
