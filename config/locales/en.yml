@@ -13,6 +13,25 @@ en:
   house: &house House
   property_type: &property_type Property Type
 
+  #---------------------- カラム自然言語定義 ----------------------#
+  activerecord:
+    attributes:
+      buy_residential_property:
+        property_name: *property_name
+        address: *address
+        price: *price
+        floore_size: *floore_size
+        floore_level: *floore_level
+        completion_date: *completion_date
+        property_type: *property_type
+
+  #---------------------- モデルのバリデーションエラーメッセージ定義 ----------------------#
+  errors:
+    models:
+      buy_residential_property:
+        price:
+          blank: "can't be blank"
+
   #---------------------- カラム要素定義 ----------------------#
   enumerize:
     default:

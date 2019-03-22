@@ -8,6 +8,16 @@ class BuyResidentialPropertiesController < ApplicationController
     @new_property = BuyResidentialProperty.new
   end
 
+  def create
+    @new_property = BuyResidentialProperty.new(buy_residential_properties_params)
+    if @new_property.save
+      redirect_to buy_residential_properties_path
+    else
+      render :new
+    end
+  end
+
+
   def index
   end
 
@@ -20,11 +30,15 @@ class BuyResidentialPropertiesController < ApplicationController
   def destroy
   end
 
-  def create
-  end
-
   def update
   end
 
   private
+
+  def buy_residential_properties_params
+    params.required(:buy_residential_property).permit(
+      :property_name, :address, :price, :floore_size, :floore_level, :completion_date,
+      property_type: []
+    )
+  end
 end
