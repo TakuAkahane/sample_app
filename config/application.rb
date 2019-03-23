@@ -44,6 +44,11 @@ module TokyoRealEstateCommunity
     # デバッグ用の設定 production環境での設定は不可
     config.web_console.whitelisted_ips = '192.168.33.1' if Rails.env == 'development'
 
+    # バリデーションエラーが発生した場合、フィールド直下に該当メッセージを出力
+    config.action_view.field_error_proc = proc do |html_tag, _instance|
+      html_tag.html_safe
+    end
+
     # I18nJs
     config.middleware.use I18n::JS::Middleware
   end

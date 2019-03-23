@@ -214,7 +214,7 @@ module FormHelper
       @template.content_for :local_js do
         "
           <script>
-            $(document).readonly(function()
+            $(document).ready(function()
               {$('##{original_id(attribute)}').material_select();
             });
           </script>
