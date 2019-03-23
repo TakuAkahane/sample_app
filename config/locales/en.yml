@@ -12,6 +12,11 @@ en:
   whole_building_apartment: &whole_building_apartment Apartment(Whole building)
   house: &house House
   property_type: &property_type Property Type
+  not_selected: &not_selected Not Selected
+  please_select: &please_select Please Select
+
+  #---------------------- メッセージ一覧 ----------------------#
+  msg:
 
   #---------------------- カラム自然言語定義 ----------------------#
   activerecord:

@@ -19,22 +19,22 @@
           = f.date_field :completion_date, {required: true}
       .row.px-3
         .col-12
-          = f.single_dropdown_list :property_type, BuyResidentialProperty.property_type.options(selected: @new_property.property_type)
+          = f.single_dropdown_list :property_type, BuyResidentialProperty.property_type.options(selected: @new_property.property_type), {include_blank: 'please_select'}, {required: true}
         .col-12
-          = f.single_dropdown_list :ward_id, BuyResidentialProperty.ward_id.options(selected: @new_property.ward_id)
+          = f.single_dropdown_list :ward_id, BuyResidentialProperty.ward_id.options(selected: @new_property.ward_id), {include_blank: 'please_select'}, {required: true}
       .row.px-3
         .col-12
-          = f.single_dropdown_list :floore_plan, BuyResidentialProperty.floore_plan.options(selected: @new_property.floore_plan)
+          = f.single_dropdown_list :floore_plan, BuyResidentialProperty.floore_plan.options(selected: @new_property.floore_plan), {include_blank: 'please_select'}, {required: true}
         .col-12
           = f.text_field :balcony_size
       .row.px-3
         .col-12
-          = f.single_dropdown_list :balcony_direction, BuyResidentialProperty.balcony_direction.options(selected: @new_property.balcony_direction)
+          = f.single_dropdown_list :balcony_direction, BuyResidentialProperty.balcony_direction.options(selected: @new_property.balcony_direction), {include_blank: 'not_selected'}
         .col-12
           = f.text_field :total_number_of_houses
       .row.px-3
         .col-12
-          = f.single_dropdown_list :rights_concening_land, BuyResidentialProperty.rights_concening_land.options(selected: @new_property.rights_concening_land), {include_blank: 'confirm'}
+          = f.single_dropdown_list :rights_concening_land, BuyResidentialProperty.rights_concening_land.options(selected: @new_property.rights_concening_land), {include_blank: 'please_select'}, {required: true}
         .col-12
           = f.text_field :management_company
       .row.px-3
