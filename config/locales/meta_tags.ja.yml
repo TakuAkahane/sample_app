@@ -1,0 +1,14 @@
+# gem 'meta-tags', app/controller/concern/meta_taggle.rbで参照する辞書
+en:
+  meta_tags:
+    #---------------------- デフォルト設定 ----------------------#
+    base:
+      site: "Tokyo Real Estate Commumnity"
+      description: "You can find best real estate in Tokyo"
+      keywords:
+        - Tokyo
+        - Real Estate
+    #---------------------- ページタイトル ----------------------#
+    titles:
+      buy_residential_properties:
+        new: Register residential property

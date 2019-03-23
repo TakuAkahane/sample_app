@@ -7,6 +7,11 @@ module ApplicationHelper
     content_tag :h1, page_title, class: 'mb-0'
   end
 
+  # h1タグ非表示
+  def disable_h1tag
+    @disable_h1tag = true
+  end
+
   # ページタイトル表示
   def page_title
     return @exception_title if @exception_title.present?
