@@ -18,7 +18,13 @@ module ApplicationHelper
     if session[:force_page_title].present?
       pt = session[:force_page_title]
       session[:force_page_title] = nil
-      return nil
+      return pt
     end
+    t("meta_tags.titles.#{controller_path}.#{action_name}", default: '')
+  end
+
+  # ページタイトル作成
+  def force_page_title(force_action_name)
+    session[:force_page_title] = t("meta_tags.titles.#{controller_path}.#{force_action_name}", default: '')
   end
 end
