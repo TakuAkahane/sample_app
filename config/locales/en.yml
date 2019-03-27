@@ -14,6 +14,15 @@ en:
   property_type: &property_type Property Type
   not_selected: &not_selected Not Selected
   please_select: &please_select Please Select
+  floore_plan: &floore_plan Floore Plan
+  balcony_size: &balcony_size Balcony Size
+  balcony_direction: &balcony_direction Balcony Direction
+  total_number_of_houses: &total_number_of_houses Total Number Of Houses
+  rights_concening_land: &rights_concening_land Rights Concening Land
+  management_company: &management_company Management Company
+  management_fee: &management_fee Management Fee
+  repair_reserve_fund: &repair_reserve_fund Repair Reserve Fund
+  handover_date: &handover_date Handover Date
 
   #---------------------- メッセージ一覧 ----------------------#
   msg:
