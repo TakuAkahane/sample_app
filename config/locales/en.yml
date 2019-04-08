@@ -23,6 +23,7 @@ en:
   management_fee: &management_fee Management Fee
   repair_reserve_fund: &repair_reserve_fund Repair Reserve Fund
   handover_date: &handover_date Handover Date
+  ward_id: &ward_id Ward ID
 
   #---------------------- メッセージ一覧 ----------------------#
   msg:
