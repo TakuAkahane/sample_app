@@ -237,5 +237,42 @@ module FormHelper
       end
     end
 
+    # 複数選択可のチェックボックス
+    def multi_checkbox(attribute, options, label_args = {}, args = {})
+      # content_tagとconcatでdocument構造を作成
+      @template.content_tag(:div, class: line_class(label_args, 'mx-auto mt-0 mb-3')) do
+        required, form_name, readonly = extend_args(lable_args)
+        form_inline = lable_args.key?(:form_inline) && lable_args[:form_inline] ? true : false
+        no_lable = lable_args.key?(:no_label) && lable_args[:no_lable] ? true : false
+        unless no_label
+          multi_checkbox_item_label(attribute, required, form_name)
+        end
+        # idとlabelを個別に指定する場合（一つのviewに複数のformがある場合、id名が被るため）
+        id_exist = args.key?(:id_params) && args[:id_params] ? true : false
+        @template.concat(
+          @template.content_tag(:div, class: check_args_class(form_inline, no_label)) do
+            # チェックボックスが選択されていない場合、nilを送信する
+            @template.concat(
+              "<input type='hidden' name='#{@object.class.name.underscore}[#{attribute}][]' value=''>".html_safe
+            )
+            options.each_with_index do |option, index|
+              id_params = id_exist ? "#{args[:id_params]}#{index}" : "#{anavi_id(attribute)}#{index}"
+              @template.concat(
+                @template.content_tag(:div, class: label_args[:item_wrapper_class] ? "custom-control custom-checkbox pl-4 pr-md-0 #{label_args[:item_wrapper_class]}" : 'custom-control custom-checkbox') do
+                  @template.concat(
+                    check_box(attribute, { multiple: true, class: 'custom-control-input', id: id_params }.merge(readonly ? args.merge(disabled: true, readonly: true) : args), option[1], nil).html_safe
+                  )
+                  @template.concat(
+                    @template.content_tag(:label, option[0], class: 'custom-control-label original-select-label mb-3', for: id_params).html_safe
+                  )
+                end
+              )
+            end
+          end
+        )
+        @template.concat(error_tag(attribute))
+      end
+    end
+
   end
 end
