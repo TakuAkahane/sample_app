@@ -7,6 +7,7 @@ en:
   floore_level: &floore_level Floore Level
   completion_date: &completion_date Completion Date
   confirm: &confirm Confirm
+  regist: &regist Regist
   required: &required Required
   unit_apartment: &unit_apartment Apartment(Unit)
   whole_building_apartment: &whole_building_apartment Apartment(Whole building)

@@ -10,6 +10,7 @@ class BuyResidentialPropertiesController < ApplicationController
 
   def create
     @new_property = BuyResidentialProperty.new(buy_residential_properties_params)
+    bp
     if @new_property.save
       redirect_to buy_residential_properties_path
     else

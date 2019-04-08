@@ -6,6 +6,13 @@ class BuyResidentialProperty < ApplicationRecord
   include BalconyDirection
   include RightsConceningLand
 
+ # 複数選択可能にするには、activerecord内で以下のserialize定義が必要
+  serialize :property_type, Array
+  serialize :ward_id, Array
+  serialize :floore_plan, Array
+  serialize :balcony_direction, Array
+  serialize :rights_concening_land, Array
+
   # validate
   validates :price, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :floore_size, presence: true, numericality: { only_integer: true, greater_than: 0 }
