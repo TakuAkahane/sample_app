@@ -26,10 +26,13 @@ class BuyResidentialPropertiesController < ApplicationController
   def edit
   end
 
-  def destroy
+  def delete
   end
 
   def update
+  end
+
+  def active
   end
 
   private

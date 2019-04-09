@@ -25,6 +25,7 @@ en:
   repair_reserve_fund: &repair_reserve_fund Repair Reserve Fund
   handover_date: &handover_date Handover Date
   ward_id: &ward_id Ward ID
+  regist_new_residential_property: &regist_new_residential_property Regist new residential property
 
   #---------------------- メッセージ一覧 ----------------------#
   msg:
