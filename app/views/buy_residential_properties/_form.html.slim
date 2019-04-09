@@ -19,7 +19,7 @@
           = f.date_field :completion_date, {required: true}
       .row.px-3
         .col-6
-          = f.multi_checkbox :property_type, BuyResidentialProperty.property_type.options(selected: @new_property.property_type), {include_blank: 'please_select'}, {required: true}
+          = f.single_dropdown_list :property_type, BuyResidentialProperty.property_type.options(selected: @new_property.property_type), {include_blank: 'please_select'}, {required: true}
         .col-6
           = f.single_dropdown_list :ward_id, BuyResidentialProperty.ward_id.options(selected: @new_property.ward_id), {include_blank: 'please_select'}, {required: true}
       .row.px-3
