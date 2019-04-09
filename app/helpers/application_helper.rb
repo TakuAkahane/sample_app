@@ -27,4 +27,12 @@ module ApplicationHelper
   def force_page_title(force_action_name)
     session[:force_page_title] = t("meta_tags.titles.#{controller_path}.#{force_action_name}", default: '')
   end
+
+  def flash_messages(_opts = {})
+    alerts = ''
+    flash.to_hash.each do |flash_type, message|
+      alerts += toastr(flash_type, message)
+    end
+    alerts.html_safe
+  end
 end

@@ -5,12 +5,12 @@ class BuyResidentialPropertiesController < ApplicationController
   layout 'single_column'
 
   def new
-    @new_property = BuyResidentialProperty.new
+    @residential_property = BuyResidentialProperty.new
   end
 
   def create
-    @new_property = BuyResidentialProperty.new(buy_residential_properties_params)
-    if @new_property.save
+    @residential_property = BuyResidentialProperty.new(buy_residential_properties_params)
+    if @residential_property.save
       redirect_to buy_residential_properties_path
     else
       render :new
@@ -18,6 +18,7 @@ class BuyResidentialPropertiesController < ApplicationController
   end
 
   def index
+    render layout: 'two_column_side_search'
   end
 
   def show
