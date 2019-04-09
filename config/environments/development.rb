@@ -72,4 +72,7 @@ Rails.application.configure do
  # デバッグ用のエラーページ設定
  BetterErrors::Middleware.allow_ip! '0.0.0.0/0'
 
+ # メール本文に記載するサイトのホスト情報
+ config.action_mailer.default_url_options = { host: 'http://localhost:3000' }
+
 end

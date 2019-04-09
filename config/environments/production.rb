@@ -94,4 +94,12 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  ##############################################################################
+  # ここから追加した項目
+  ##############################################################################
+
+  # TODO: URLを設定する
+  # メール本文に記載するサイトのホスト情報
+  config.action_mailer.default_url_options = { host: '' }
 end

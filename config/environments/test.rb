@@ -43,4 +43,12 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  ##############################################################################
+  # ここから追加した項目
+  ##############################################################################
+
+  # TODO: URLを設定する
+  # メール本文に記載するサイトのホスト情報
+  config.action_mailer.default_url_options = { host: '' }
 end

@@ -2,7 +2,12 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :users
   get 'my', to: 'my#index'
+
+  # TODO: rootを再定義（myはlogin userのみにする）
+  # userのroot定義
+  root 'my#index'
 
   resources :buy_residential_properties, only: %i[] do
     collection do
