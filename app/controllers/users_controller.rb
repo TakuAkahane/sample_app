@@ -6,4 +6,19 @@ class UsersController < ApplicationController
 
   def index
   end
+
+  def new
+  end
+
+  def create
+  end
+
+  def change_in_charge
+  end
+
+  def change_account_type
+  end
+
+  def destroy_sub_account
+  end
 end

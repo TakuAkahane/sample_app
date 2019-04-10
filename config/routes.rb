@@ -28,8 +28,14 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[edit update]
   resources :users, except: %i[index] do
+    member do
+      patch 'manage/change_account_type' => 'users#change_account_type'
+      delete 'manage/destroy_sub_account' => 'users#destroy_sub_account'
+    end
     collection do
       get 'manage/users' => 'users#index'
+      get 'manage/change_in_charge' => 'users#change_in_charge'
+      post 'manage/create_account' => 'users#create'
     end
   end
 
@@ -48,11 +54,5 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'users/registrations' => 'users/registrations#index'
     post 'users/sign_in' => 'users/sessions#create'
-  end
-
-  resources :users, except: %i[index] do
-    collection do
-      get 'manage/users' => 'users#index'
-    end
   end
 end
