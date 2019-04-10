@@ -27,6 +27,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: %i[edit update]
+  resources :users, except: %i[index] do
+    collection do
+      get 'manage/users' => 'users#index'
+    end
+  end
+
   # devise関連
   devise_for :users, path: 'users',
                      controllers: {
