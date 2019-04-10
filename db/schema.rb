@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_09_233224) do
+ActiveRecord::Schema.define(version: 2019_04_10_214738) do
 
   create_table "buy_residential_properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "property_name", null: false
@@ -31,6 +31,21 @@ ActiveRecord::Schema.define(version: 2019_04_09_233224) do
     t.integer "repair_reserve_fund", null: false, comment: "修繕積立金"
     t.datetime "handover_date", null: false, comment: "引き渡し日"
     t.text "transportation", null: false, comment: "交通手段"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "ward_id", null: false, comment: "区ID"
+    t.string "address", null: false, comment: "住所詳細"
+    t.string "name", null: false, comment: "名前"
+    t.integer "tel", null: false, comment: "電話番号"
+    t.string "public", null: false, comment: "公開/非公開"
+    t.integer "establishment", comment: "設立年"
+    t.text "description", comment: "概要"
+    t.boolean "deleted", default: false, comment: "削除フラグ"
+    t.string "company_size_id", comment: "企業規模識別子"
+    t.integer "user_parent_id", null: false, comment: "親ユーザID"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
