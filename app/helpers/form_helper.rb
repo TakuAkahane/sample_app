@@ -84,6 +84,29 @@ module FormHelper
       args
     end
 
+    # ラジオボタン構成要素
+    def render_radio_buttons(attribute, options, label_args = {}, args = {})
+      readonly = args.key?(:readonly) && args[:readonly] ? true : false
+      form_inline = label_args.key?(:form_inline) && label_args[:form_inline] ? true : false
+      attribute_value = @object.send(attribute).is_a?(Enumerize::Set) ? @object.send(attribute).to_a[0] : @object.send(attribute) if @object.present?
+      @template.content_tag(:div, class: form_inline ? 'form-inline mb-3' : 'mb-3') do
+        options.each_with_index do |option, index|
+          check_merged_args = {}
+          check_merged_args = args.merge(checked: true) if attribute_value.present? && attribute_value == option[1]
+          @template.concat(
+            @template.content_tag(:div, class: 'form-check') do
+              @template.concat(
+                radio_button(attribute, option[1], { class: 'form-check-input', id: "#{original_id(attribute)}#{index}" }.merge(readonly ? check_merged_args.merge(disabled: true, readonly: true) : check_merged_args))
+              )
+              @template.concat(
+                @template.content_tag(:label, option[0], class: 'form-check-label', for: "#{original_id(attribute)}#{index}")
+              )
+            end
+          )
+        end
+      end
+    end
+
     #---------------------- 各種フィールド ----------------------#
     # テキストフィールド（form_nameが'blank'の場合、タイトル・項目名非表示）
     def text_field(attribute, label_args = {}, args = {})
@@ -284,6 +307,27 @@ module FormHelper
               )
             end
           end
+        )
+        @template.concat(error_tag(attribute))
+      end
+    end
+
+    # ラジオボタン
+    def standard_radio_buttons(attribute, options, label_args = {}, args = {})
+      required = label_args.key?(:required) && label_args[:required] ? true : false
+      form_name = label_args.key?(:form_name) ? label_args[:form_name] : nil
+      no_label = label_args.key?(:no_label) && label_args[:no_label] ? true : false
+      label_class = label_class(label_args, 'active')
+      out = ''
+      unless no_label
+        out = @template.content_tag(:label, class: label_class) do
+          (I18n.t(form_name.present? ? form_name : attribute) + (required ? @template.content_tag(:span, I18n.t('required'), class: 'badge-pill badge-danger pink lighten-2 font-small ml-3') : '')).html_safe
+        end
+      end
+      @template.content_tag(:div, class: line_class(label_args, 'md-form')) do
+        @template.concat(out)
+        @template.concat(
+          render_radio_buttons(attribute, options, label_args, args)
         )
         @template.concat(error_tag(attribute))
       end

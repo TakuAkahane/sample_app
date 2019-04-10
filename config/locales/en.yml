@@ -27,6 +27,9 @@ en:
   ward_id: &ward_id Ward ID
   regist_new_residential_property: &regist_new_residential_property Regist new residential property
   member_information: &member_information Member Information
+  individual_use: &individual_use Individual Use
+  corporate_use: &corporate_use Corporate Use
+  usage_classification: &usage_classification Usage Classification
 
   #---------------------- メッセージ一覧 ----------------------#
   msg:
