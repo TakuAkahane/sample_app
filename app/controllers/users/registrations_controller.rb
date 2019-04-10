@@ -6,6 +6,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
+    if user_signed_in?
+      # ログイン済みの場合はログアウトを促す
+      flash[:alert] = t('msg.require_logout')
+      redirect_back(fallback_location: users_registrations_path)
+      return
+    end
+    # インスタンス作成後、会社情報を自動保管するためにbuild_[model]メソッドを実行
+    @user = User.new
+    @user.build_company
   end
 
   # POST /resource

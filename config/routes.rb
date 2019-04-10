@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %i[edit update]
-  resources :users, except: %i[index] do
+  resources :users, except: %i[index show] do
     member do
       patch 'manage/change_account_type' => 'users#change_account_type'
       delete 'manage/destroy_sub_account' => 'users#destroy_sub_account'

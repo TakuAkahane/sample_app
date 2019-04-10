@@ -1,4 +1,10 @@
+# encoding: utf-8
+# frozen_string_literal: true
+
 class User < ApplicationRecord
+  # テーブルのアソシエーション定義
+  belongs_to :company, optional: true
+
   # gem deviseで有効にする機能を列挙
   # Include default devise modules. Others available are:
   devise :database_authenticatable, :registerable,

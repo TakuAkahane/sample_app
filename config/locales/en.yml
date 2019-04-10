@@ -26,9 +26,12 @@ en:
   handover_date: &handover_date Handover Date
   ward_id: &ward_id Ward ID
   regist_new_residential_property: &regist_new_residential_property Regist new residential property
+  member_information: &member_information Member Information
 
   #---------------------- メッセージ一覧 ----------------------#
   msg:
+    require_logout: 'Please log out once before using'
+    complete_registration: 'Registration is completed by input on this page and email authentication'
 
   #---------------------- カラム自然言語定義 ----------------------#
   activerecord:
