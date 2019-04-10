@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # user関連
+  # devise関連
   devise_for :users, path: 'users',
                      controllers: {
                        users: 'users',
@@ -38,4 +38,15 @@ Rails.application.routes.draw do
                        unlocks: 'users/unlocks',
                        passwords: 'users/passwords'
                      }
+
+  devise_scope :user do
+    get 'users/registrations' => 'users/registrations#index'
+    post 'users/sign_in' => 'users/sessions#create'
+  end
+
+  resources :users, except: %i[index] do
+    collection do
+      get 'manage/users' => 'users#index'
+    end
+  end
 end

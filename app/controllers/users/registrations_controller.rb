@@ -3,4 +3,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   layout 'single_column'
+
+  def index
+  end
 end

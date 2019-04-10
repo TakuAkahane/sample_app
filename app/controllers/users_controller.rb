@@ -3,4 +3,7 @@
 
 class UsersController < ApplicationController
   layout 'two_column_side_search'
+
+  def index
+  end
 end
