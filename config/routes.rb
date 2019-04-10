@@ -26,4 +26,16 @@ Rails.application.routes.draw do
       patch 'manage/update' => 'buy_residential_properties#update'
     end
   end
+
+  # user関連
+  devise_for :users, path: 'users',
+                     controllers: {
+                       users: 'users',
+                       omniauth_callbacks: 'users/omniauth_callbacks',
+                       sessions: 'users/sessions',
+                       registrations: 'users/registrations',
+                       confirmations: 'users/confirmations',
+                       unlocks: 'users/unlocks',
+                       passwords: 'users/passwords'
+                     }
 end
