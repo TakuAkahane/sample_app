@@ -2,7 +2,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users
   get 'my', to: 'my#index'
 
   # TODO: rootを再定義（myはlogin userのみにする）
