@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_11_000157) do
+ActiveRecord::Schema.define(version: 2019_04_11_221848) do
 
   create_table "buy_residential_properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "property_name", null: false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_04_11_000157) do
     t.integer "user_parent_id", null: false, comment: "親ユーザID"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "site_url", limit: 1026, comment: "会社HPのURL"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -80,6 +81,7 @@ ActiveRecord::Schema.define(version: 2019_04_11_000157) do
     t.integer "tel", comment: "電話番号"
     t.string "display_name", limit: 30, comment: "表示名"
     t.string "password", limit: 50, comment: "パスワード"
+    t.boolean "incomplete_sns_registration", comment: "snsを使った会員登録プロセスフラグ"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

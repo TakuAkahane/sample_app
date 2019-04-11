@@ -37,6 +37,10 @@ en:
   email: &email Email
   password: &password Password
   tel: &tel Tel
+  company_name: &company_name Company name
+  site_url: &site_url Site url
+  established_year: &established_year Established year
+  number_of_employees: &number_of_employees Number of employees
 
   #---------------------- メッセージ一覧 ----------------------#
   msg:
@@ -47,6 +51,9 @@ en:
     ex_displayname: 'ex: JohnSmith, TokyoTaro2003'
     ex_tel: 'ex: 0333242324'
     ex_email: 'ex: john_smith@gmail.com'
+    ex_site_url: 'ex: https://google.com'
+    ex_establishment: 'ex: 2010'
+    ex_number_of_employees: 'ex: 30'
     please_input_password: 'Please input password'
     display_fullname_in_the_case_of_blank: 'If not filled in, the first and last name will be displayed'
     register_with_your_company_email_in_case_of_corporate_use: "In the case of corporate use, please register at your company's email address"

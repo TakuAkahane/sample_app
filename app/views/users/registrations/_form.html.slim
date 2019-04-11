@@ -10,3 +10,13 @@ p.custom-grey-text.mb-5
   p.custom-grey-text.mb-5.email_note.d-none
     = t('msg.register_with_your_company_email_in_case_of_corporate_use')
   = f.password_field :password, {required: true, line_class: 'mx-auto mb-5', label_class: 'mb-3 font-middle'}, {placeholder: t('msg.please_input_password')}
+
+- display = @user.individual_use ? 'none' : 'block'
+- if !registration_process_by_sns?
+  .corporate_form[style= 'display: #{display};']
+    - # 会社情報入力項目
+    = f.fields_for :company do |c|
+      = c.text_field :name, {required: true, form_name: 'company_name', line_class: 'mx-auto mb-5', label_class: 'mb-3 font-middle'}
+      = c.text_field :site_url, {required: true, line_class: 'mx-auto mb-5', label_class: 'mb-3 font-middle'}, {placeholder: t('msg.ex_site_url')}
+      = c.text_field :establishment, {required: true, form_name: 'established_year', line_class: 'mx-auto mb-5', label_class: 'mb-3 font-middle'}, {placeholder: t('msg.ex_establishment')}
+      = c.text_field :number_of_employees, {required: true, line_class: 'mx-auto mb-5', label_class: 'mb-3 font-middle'}, {placeholder: t('msg.ex_number_of_employees')}
