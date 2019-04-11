@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_10_223637) do
+ActiveRecord::Schema.define(version: 2019_04_11_000157) do
 
   create_table "buy_residential_properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "property_name", null: false
@@ -75,6 +75,11 @@ ActiveRecord::Schema.define(version: 2019_04_10_223637) do
     t.string "name", comment: "ユーザ名"
     t.integer "company_id", comment: "会社ID"
     t.boolean "individual_use", comment: "個人利用フラグ"
+    t.string "last_name", limit: 30, comment: "姓"
+    t.string "first_name", limit: 30, comment: "名"
+    t.integer "tel", comment: "電話番号"
+    t.string "display_name", limit: 30, comment: "表示名"
+    t.string "password", limit: 50, comment: "パスワード"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

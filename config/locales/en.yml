@@ -30,11 +30,26 @@ en:
   individual_use: &individual_use Individual Use
   corporate_use: &corporate_use Corporate Use
   usage_classification: &usage_classification Usage Classification
+  last_name: &last_name Last name
+  first_name: &first_name First name
+  name: &name Name
+  display_name: &display_name Display name
+  email: &email Email
+  password: &password Password
+  tel: &tel Tel
 
   #---------------------- メッセージ一覧 ----------------------#
   msg:
     require_logout: 'Please log out once before using'
     complete_registration: 'Registration is completed by input on this page and email authentication'
+    ex_firstname: 'ex: John'
+    ex_lastname: 'ex: Smith'
+    ex_displayname: 'ex: JohnSmith, TokyoTaro2003'
+    ex_tel: 'ex: 0333242324'
+    ex_email: 'ex: john_smith@gmail.com'
+    please_input_password: 'Please input password'
+    display_fullname_in_the_case_of_blank: 'If not filled in, the first and last name will be displayed'
+    register_with_your_company_email_in_case_of_corporate_use: "In the case of corporate use, please register at your company's email address"
 
   #---------------------- カラム自然言語定義 ----------------------#
   activerecord:

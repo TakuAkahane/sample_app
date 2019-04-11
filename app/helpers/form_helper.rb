@@ -195,7 +195,7 @@ module FormHelper
     def email_field(attribute, label_args = {}, args = {})
       required, form_name, readonly = extend_args(label_args)
       label_class = label_class(label_args, 'mb-3')
-      @template.content_tag(:div, class: line_class(line_args, 'md-form mx-auto')) do
+      @template.content_tag(:div, class: line_class(label_args, 'md-form mx-auto')) do
         @template.concat(
           label_for(attribute, required, form_name, label_class)
         )
@@ -210,7 +210,7 @@ module FormHelper
     def password_field(attribute, label_args = {}, args = {})
       required, form_name, readonly = extend_args(label_args)
       label_class = label_class(label_args, 'mb-3')
-      @template.content_tag(:div, class: line_class(line_args, 'md-form mx-auto')) do
+      @template.content_tag(:div, class: line_class(label_args, 'md-form mx-auto')) do
         unless form_name == 'blank'
           @template.concat(
             label_for(attribute, required, form_name, label_class)
@@ -224,19 +224,19 @@ module FormHelper
     end
 
     # 氏名フィールド
-    def personal_name_field(last_name, first_name, label_args = {}, args = {})
+    def personal_name_field(first_name, last_name, label_args = {}, args = {})
       top_div_class = { class: 'col-6' }
       second_div_class = { class: 'mb-0' }
-      # last_name
-      out = @template.content_tag(:dig, top_div_class) do
-        @template.content_tag(:dig, second_div_class) do
-          text_field(last_name, label_args, args.merge(placeholder: I18n.t('msg.ex_lastname')))
-        end
-      end
       # first_name
-      out += @template.content_tag(:div, top_div_class) do
+      out = @template.content_tag(:div, top_div_class) do
         @template.content_tag(:div, second_div_class) do
           text_field(first_name, label_args, args.merge(placeholder: I18n.t('msg.ex_firstname')))
+        end
+      end
+      # last_name
+      out += @template.content_tag(:dig, top_div_class) do
+        @template.content_tag(:dig, second_div_class) do
+          text_field(last_name, label_args, args.merge(placeholder: I18n.t('msg.ex_lastname')))
         end
       end
       @template.content_tag(:div, class: line_class(label_args, 'row')) do
