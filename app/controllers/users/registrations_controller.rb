@@ -61,11 +61,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
 
-  # TODO: public
   def update_company_in_create
     return if resource.individual_use
     resource.company.user_parent_id = resource.id
-    resource.company.public = 'public'
+    resource.company.public = Compnay.public.public
     resource.company.tel = @user.tel
     resource.company.employee_size_id = set_employee_size_id
     resource.company.save(validate: false)
