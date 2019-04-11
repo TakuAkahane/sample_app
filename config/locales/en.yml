@@ -57,6 +57,7 @@ en:
     please_input_password: 'Please input password'
     display_fullname_in_the_case_of_blank: 'If not filled in, the first and last name will be displayed'
     register_with_your_company_email_in_case_of_corporate_use: "In the case of corporate use, please register at your company's email address"
+    registration_completed_by_sns: 'Member registration has been done with SNS certification. If you need to log in with a password, register on the password change screen after loggin in with SNS authentication'
 
   #---------------------- カラム自然言語定義 ----------------------#
   activerecord:
