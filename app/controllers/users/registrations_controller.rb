@@ -21,7 +21,26 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     return if registrated_by_sns_auth?
     unless create_valid?
+      flash.now[:error] = t('msg.error_in_the_input_content')
+      render :new
+      return
     end
+    begin
+      ActiveRecord::Base.transaction do
+        # 確認メールの再送信
+        resend_confirmation_mail if @user.id.present?
+        # company paramsがある場合、devise controllerにて無条件でcompanyレコードが作られる。そのため個人利用の場合はcompany paramsを削除。
+        params[:user][:company_attributes] = nil if @user.individual_use
+        # deviseへの登録処理
+        super
+        resource.update_attribute(:parent_id, resource.id)
+        # 登録出来た場合、DB登録完了のフラグを立てる
+        db_auth_registration_completed
+        # 法人利用の場合
+        update_company_in_create
+        end
+      end
+    rescue
   end
 
   # GET /resource/edit
@@ -41,6 +60,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   private
+
+  # TODO: public
+  def update_company_in_create
+    return if resource.individual_use
+    resource.company.user_parent_id = resource.id
+    resource.company.public = 'public'
+    resource.company.tel = @user.tel
+    resource.company.employee_size_id = set_employee_size_id
+    resource.company.save(validate: false)
+  end
 
   def create_valid?
     # DB認証の会員登録バリデーション
@@ -68,6 +97,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.valid?(tag)
   end
 
+  def db_auth_registration_completed
+    user = User.find_by(email: params.require(:user).permit(:email)[:email])
+    user.update_attribute(:db_auth_registration_completed, true) unless user.blank?
+  end
+
   def registrated_by_sns_auth?
     user = User.find_by(email: params.require(:user).permit(:email)[:email])
     if user.present? && user.db_auth_registration_completed == false && user.id == user.parent_id
@@ -78,5 +112,26 @@ class Users::RegistrationsController < Devise::RegistrationsController
       return true
     end
     false
+  end
+
+  def resend_confirmation_mail
+    raw_token, _hashed_token = Devise.token_generator.generate(User, :confirmation_token)
+    @user.confirmation_token = raw_token
+    @user.confirmation_sent_at = Time.now
+    @user.save
+    @user.resend_confirmation_instructions
+    set_flash_message! :notice, :"signed_up_buy_#{resource.inactive_message}"
+    expire_data_after_sign_in!
+    respond_with @user, location: after_inactive_sign_up_path_for(@user)
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:role_id, :first_name, :last_name, :display_name, :email, :individual_use,
+                                                       :password, :tel,
+                                                       company_attributes: %i[name site_url establishment number_of_employees]])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :display_name, :prefecture_id, :address, :tel,
+                                                              :division, :position,
+                                                              company_attributes: %i[name site_url tel business establishment capital number_of_employees]])
+    devise_parameter_sanitizer.permit(:sub_account_registration, keys: %i[first_name last_name display_name division position])
   end
 end

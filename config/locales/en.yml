@@ -44,6 +44,7 @@ en:
 
   #---------------------- メッセージ一覧 ----------------------#
   msg:
+    error_in_the_input_content: 'The input content is incorrect'
     require_logout: 'Please log out once before using'
     complete_registration: 'Registration is completed by input on this page and email authentication'
     ex_firstname: 'ex: John'
