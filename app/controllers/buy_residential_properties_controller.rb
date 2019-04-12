@@ -11,7 +11,7 @@ class BuyResidentialPropertiesController < ApplicationController
   def create
     @residential_property = BuyResidentialProperty.new(buy_residential_properties_params)
     if @residential_property.save
-      redirect_to buy_residential_properties_path
+      redirect_to manage_index_buy_residential_properties_path
     else
       render :new
     end
@@ -41,8 +41,9 @@ class BuyResidentialPropertiesController < ApplicationController
   def buy_residential_properties_params
     params.required(:buy_residential_property).permit(
       :property_name, :ward_id, :address, :price, :floore_plan, :floore_size, :floore_level, :completion_date,
-      :property_type, :balcony_size, :balcony_direction, :total_number_of_houses, :rights_concening_land, :management_company,
-      :management_fee, :repair_reserve_fund, :handover_date, :transportation
+      :balcony_size, :balcony_direction, :total_number_of_houses, :rights_concening_land, :management_company,
+      :management_fee, :repair_reserve_fund, :handover_date, :transportation,
+      property_type: []
     )
   end
 end

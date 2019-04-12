@@ -1,3 +1,6 @@
+# encoding: utf-8
+# frozen_string_literal: true
+
 class BuyResidentialProperty < ApplicationRecord
   # 列挙型カラム向け gem 利用
   include PropertyType
@@ -11,7 +14,6 @@ class BuyResidentialProperty < ApplicationRecord
   serialize :ward_id, Array
   serialize :floore_plan, Array
   serialize :balcony_direction, Array
-  serialize :rights_concening_land, Array
 
   # validate
   validates :price, presence: true, numericality: { only_integer: true, greater_than: 0 }
