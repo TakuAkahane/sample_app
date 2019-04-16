@@ -13,10 +13,10 @@ end
 # 区ID
 module WardId
   extend Enumerize
-  enumerize :ward_id, in: %i[minato chuo shibuya meguro shinagawa chiyoda bunkyo
-                             shinjuku setagaya nakano suginami toshima sumida
-                             katsushika eodgawa taito koto ota kita arakawa
-                             itabashi nerima adachi], multiple: true
+  enumerize :ward_id, in: %i[minato chuo shibuya shinjuku shinagawa meguro
+                             chiyoda bunkyo setagaya nakano suginami toshima
+                             sumida katsushika eodgawa taito koto ota kita
+                             arakawa itabashi nerima adachi], multiple: true
 end
 # 間取り
 module FloorePlan

@@ -41,6 +41,53 @@ en:
   site_url: &site_url Site url
   established_year: &established_year Established year
   number_of_employees: &number_of_employees Number of employees
+  minato: &minato Minato
+  chuo: &chuo Chuo
+  shibuya: &shibuya Shibuya
+  shinjuku: &shinjuku Shinjuku
+  shinagawa: &shinagawa Shinagawa
+  meguro: &meguro Meguro
+  chiyoda: &chiyoda Chiyoda
+  bunkyo: &bunkyo Bunkyo
+  setagaya: &setagaya Setagaya
+  nakano: &nakano Nakano
+  suginami: &suginami Suginami
+  toshima: &toshima Toshima
+  sumida: &sumida Sumida
+  katsushika: &katsushika Katsushika
+  eodgawa: &eodgawa Edogawa
+  taito: &taito Taito
+  koto: &koto Koto
+  ota: &ota Ota
+  kita: &kita Kita
+  arakawa: &arakawa Arakawa
+  itabashi: &itabashi Itabashi
+  nerima: &nerima Nerima
+  adachi: &adachi Adachi
+  1r: &1r 1r
+  1k: &1k 1k
+  1dk: &1dk 1dk
+  1ldk: &1ldk 1ldk
+  2k: &2k 2k
+  2dk: &2dk 2dk
+  2ldk: &2ldk 2ldk
+  3k: &3k 3k
+  3dk: &3dk 3dk
+  3ldk: &3ldk 3ldk
+  4k: &4k 4k
+  4dk: &4dk 4dk
+  4ldk: &4ldk 4ldk
+  5k: &5k 5k
+  5dk: &5dk 5dk
+  5ldk: &5ldk 5ldk
+  east: &east East
+  west: &west West
+  south: &south South
+  north: &north North
+  ownership: &ownership Ownership
+  leasehod: &leasehod Leasehold
+  public: &public Public
+  private: &private Private
 
   #---------------------- メッセージ一覧 ----------------------#
   msg:
@@ -86,3 +133,55 @@ en:
         unit_apartment: *unit_apartment
         whole_building_apartment: *whole_building_apartment
         house: *house
+      ward_id:
+        minato: *minato
+        chuo: *chuo
+        shibuya: *shibuya
+        shinjuku: *shinjuku
+        shinagawa: *shinagawa
+        meguro: *meguro
+        chiyoda: *chiyoda
+        bunkyo: *bunkyo
+        setagaya: *setagaya
+        nakano: *nakano
+        suginami: *suginami
+        toshima: *toshima
+        sumida: *sumida
+        katsushika: *katsushika
+        eodgawa: *eodgawa
+        taito: *taito
+        koto: *koto
+        ota: *ota
+        kita: *kita
+        arakawa: *arakawa
+        itabashi: *itabashi
+        nerima: *nerima
+        adachi: *adachi
+      floore_plan:
+        1r: *1r
+        1k: *1k
+        1dk: *1dk
+        1ldk: *1ldk
+        2k: *2k
+        2dk: *2dk
+        2ldk: *2ldk
+        3k: *3k
+        3dk: *3dk
+        3ldk: *3ldk
+        4k: *4k
+        4dk: *4dk
+        4ldk: *4ldk
+        5k: *5k
+        5dk: *5dk
+        5ldk: *5ldk
+      balcony_direction:
+        east: *east
+        west: *west
+        south: *south
+        north: *north
+      rights_concening_land:
+        ownership: *ownership
+        leasehod: *leasehod
+      public:
+        public: *public
+        private: *private
