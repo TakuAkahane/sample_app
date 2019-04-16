@@ -1,0 +1,16 @@
+.col-12.col-md-6.col-xl-4.d-flex
+  .card.mb-4.w-100.hoverable
+    = link_to manage_view_buy_residential_property_path(property.id)
+      .card-header
+        h5.mb-0.font-middle.float-left
+          span.d-block.mb-1
+            = property.property_name.truncate(15)
+        i.material-icons.md-light.d-block.text-right
+          | description
+
+    .card-content
+      .row
+        .col-12.col-sm-6.col-md-12
+          .mb-3
+            label.custom-grey-text.mb-0 #{t('registered_date')}
+            = property.created_at

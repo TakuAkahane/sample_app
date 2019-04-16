@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     end
     member do
       # 管理
+      get 'manage/view' => 'buy_residential_properties#view'
       get 'manage/show' => 'buy_residential_properties#show'
       get 'manage/edit' => 'buy_residential_properties#edit'
       delete 'manage/delete' => 'buy_residential_properties#delete'

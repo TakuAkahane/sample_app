@@ -18,10 +18,14 @@ class BuyResidentialPropertiesController < ApplicationController
   end
 
   def index
+    @residential_properties = BuyResidentialProperty.all.paginate(page: params[:page], per_page: 12)
     render layout: 'two_column_side_search'
   end
 
   def show
+  end
+
+  def view
   end
 
   def edit

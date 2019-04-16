@@ -5,3 +5,24 @@
       i.material-icons.font-extralarge.mr-3.vertical-sub
         | insert_drive_file
       span = t('regist_new_residential_property')
+
+/* ヒットしたレコード数表示
+.row
+  .col-12
+    = hit_records(@residential_properties.total_entries.to_s(:delimited))
+
+/* レコード中身表示
+.row
+  - @residential_properties.each do |property|
+    = render partial: '/buy_residential_properties/manage_summary', :locals => {property: property, attention: false}
+  / .col-12
+  /   table.table.table-bordered.table-responsive-lg.white
+  /     thead.default-color.white-text
+  /       tr
+  /         thead.default-color.white-text
+  /           tr
+  /             th.vertical-middle rowspan="2"
+  /               = t('registered_date')
+  /         tbody
+  /           - @residential_properties.each do |property|
+  /             = render partial: '/buy_residential_properties/manage_summary_table', :locals => {property: property, attention: false}
