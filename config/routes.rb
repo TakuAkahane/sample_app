@@ -55,5 +55,6 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'users/registrations' => 'users/registrations#index'
     post 'users/sign_in' => 'users/sessions#create'
+    post 'users/sign_in' => 'users/sessions#create'
   end
 end

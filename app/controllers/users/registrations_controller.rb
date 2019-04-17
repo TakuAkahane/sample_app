@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :configure_permitted_parameters
   layout 'single_column'
 
   # GET /resource/sign_up
@@ -19,28 +20,38 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    bp
     return if registrated_by_sns_auth?
+    bp
     unless create_valid?
       flash.now[:error] = t('msg.error_in_the_input_content')
+      bp
       render :new
       return
     end
     begin
       ActiveRecord::Base.transaction do
-        # 確認メールの再送信
-        resend_confirmation_mail if @user.id.present?
-        # company paramsがある場合、devise controllerにて無条件でcompanyレコードが作られる。そのため個人利用の場合はcompany paramsを削除。
-        params[:user][:company_attributes] = nil if @user.individual_use
-        # deviseへの登録処理
-        super
-        resource.update_attribute(:parent_id, resource.id)
-        # 登録出来た場合、DB登録完了のフラグを立てる
-        db_auth_registration_completed
-        # 法人利用の場合
-        update_company_in_create
+        if @user.id.present?
+          # 確認メールの再送信
+          resend_confirmation_mail
+        else
+          # company paramsがある場合、devise controllerにて無条件でcompanyレコードが作られる。そのため個人利用の場合はcompany paramsを削除。
+          params[:user][:company_attributes] = nil if @user.individual_use
+          # deviseへの登録処理
+          super
+          resource.update_attribute(:parent_id, resource.id)
+          # 登録出来た場合、DB登録完了のフラグを立てる
+          db_auth_registration_completed
+          # 法人利用の場合
+          update_company_in_create
         end
       end
-    rescue
+    rescue StandardError => e
+      logger.error e
+      flash.now[:error] = t('msg.error_in_the_input_content')
+      bp
+      render :new
+    end
   end
 
   # GET /resource/edit
