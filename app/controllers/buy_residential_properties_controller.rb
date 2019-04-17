@@ -22,7 +22,8 @@ class BuyResidentialPropertiesController < ApplicationController
     render layout: 'two_column_side_search'
   end
 
-  def show
+  def detail
+    @residential_property = BuyResidentialProperty.all.last
   end
 
   def view
