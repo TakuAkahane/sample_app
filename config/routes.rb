@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     member do
       # 管理
       get 'manage/view' => 'buy_residential_properties#view'
-      get 'manage/show' => 'buy_residential_properties#show'
+      get 'manage/detail' => 'buy_residential_properties#detail'
       get 'manage/edit' => 'buy_residential_properties#edit'
       delete 'manage/delete' => 'buy_residential_properties#delete'
       patch 'manage/update' => 'buy_residential_properties#update'
