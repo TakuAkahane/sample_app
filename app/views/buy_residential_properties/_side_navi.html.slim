@@ -1,3 +1,5 @@
 - case controller.action_name
 - when 'index'
-  = render partial: 'residential_properties_side_navi'
+  = render partial: 'property_manage_side_navi'
+- when 'active', 'keyword', 'category_page'
+  = render partial: 'property_search_side_navi'
