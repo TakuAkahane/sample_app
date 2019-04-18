@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_16_225141) do
+ActiveRecord::Schema.define(version: 2019_04_17_234939) do
 
   create_table "buy_residential_properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "property_name", null: false
@@ -60,6 +60,22 @@ ActiveRecord::Schema.define(version: 2019_04_16_225141) do
     t.string "account_type", comment: "アカウント種類"
     t.integer "default_corporate", limit: 1, comment: "デフォルト設定（会社）"
     t.boolean "default_individual", comment: "デフォルト設定（個人）"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "site_title", limit: 50, comment: "サイトタイトル"
+    t.boolean "maintenance_mode_flg", comment: "メンテナンスモードフラグ"
+    t.text "maintenance_description", comment: "メンテナンス中の説明書き"
+    t.string "allow_access_ip_under_maintenance", limit: 15, comment: "メンテナンス中にアクセス出来るIP"
+    t.boolean "stop_send_mail_batch_flg", comment: "メールバッチ送信停止フラグ"
+    t.string "allow_access_system_admin_ip", limit: 15, comment: "システムアドミンにアクセス出来るIP"
+    t.string "mail_from", limit: 30, comment: "メール送信元アドレス"
+    t.string "mail_admin_to", limit: 30, comment: "アドミンメールアドレス"
+    t.string "secretarist", limit: 50, comment: "事務局名"
+    t.text "mail_signature_default", comment: "メール署名デフォルト"
+    t.text "mail_signature_admin", comment: "メール署名管理版"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
