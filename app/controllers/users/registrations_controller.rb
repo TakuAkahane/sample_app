@@ -20,12 +20,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    bp
     return if registrated_by_sns_auth?
-    bp
     unless create_valid?
       flash.now[:error] = t('msg.error_in_the_input_content')
-      bp
       render :new
       return
     end
@@ -49,7 +46,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     rescue StandardError => e
       logger.error e
       flash.now[:error] = t('msg.error_in_the_input_content')
-      bp
       render :new
     end
   end
