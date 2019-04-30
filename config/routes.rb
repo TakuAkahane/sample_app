@@ -53,8 +53,24 @@ Rails.application.routes.draw do
                      }
 
   devise_scope :user do
+    get 'manage/users/edit_account_type' => 'users#edit_account_type'
+    get 'users/auth/sns_auth' => 'users/omniauth_callbacks#sns_auth'
+    get 'users/password/editpass' => 'users/passwords#edit'
+    put 'users/password/updatepass' => 'users/passwords#update'
+    post 'users/sign_in' => 'users/sessions#create'
     get 'users/registrations' => 'users/registrations#index'
-    post 'users/sign_in' => 'users/sessions#create'
-    post 'users/sign_in' => 'users/sessions#create'
+    get 'users/profile/edit_password' => 'users/registrations#edit_profile_password'
+    patch 'users/profile/change_password' => 'users/registrations#edit_profile_email'
+    get 'users/profile/edit_email' => 'users/registrations#edit_profile_email'
+    patch 'users/profile/change_email' => 'users/registrations#change_profile_email'
+    get 'users/profile/edit_email_reception_settings' => 'users/registrations#edit_mail_reception_settings'
+    patch 'users/profile/change_mail_reception_settings' => 'users/registrations#change_mail_reception_settings'
+    get 'users/thanks_company' => 'users/registrations#thanks'
+    get 'users/thanks_personal' => 'users/registrations#thanks'
+    get 'users/thanks_g_company' => 'users/registrations#tracking'
+    get 'users/thanks_g_personal' => 'users/registrations#tracking'
+    get 'users/thanks_f_company' => 'users/registrations#tracking'
+    get 'users/thanks_f_personal' => 'users/registrations#tracking'
+    get 'users/thanks_unknown_sns' => 'users/registrations#tracking'
   end
 end
