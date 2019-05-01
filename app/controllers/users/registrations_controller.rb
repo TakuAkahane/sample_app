@@ -3,6 +3,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters
+  before_action :registration_completed?, except: %i[update]
   layout 'single_column'
 
   # GET /resource/sign_up
