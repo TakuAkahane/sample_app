@@ -4,6 +4,7 @@
 class User < ApplicationRecord
   # テーブルのアソシエーション定義
   belongs_to :company, optional: true
+  belongs_to :role, optional: false, class_name: 'Trec::Role'
 
   # gem deviseで有効にする機能を列挙
   # Include default devise modules. Others available are:

@@ -39,6 +39,11 @@ module CompanyPublicStatus
   extend Enumerize
   enumerize :public, in: %i[public private], multiple: false
 end
+# アカウントタイプ（メイン/サブ管理者/サブユーザ）
+module AccountType
+  extend Enumerize
+  enumerize :account_type, in: %i[main_account sub_account_admin sub_account_user], multiple: false
+end
 
 #----------------------------------------------------------------------------#
 # Activerecord 基底クラス

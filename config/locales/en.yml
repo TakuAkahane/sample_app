@@ -88,6 +88,9 @@ en:
   leasehod: &leasehod Leasehold
   public: &public Public
   private: &private Private
+  main_account: &main_account Main account
+  sub_account_admin: &sub_account_admin Sub account admin
+  sub_account_user: &sub_account_user Sub account user
 
   #---------------------- メッセージ一覧 ----------------------#
   msg:
@@ -185,3 +188,7 @@ en:
       public:
         public: *public
         private: *private
+      account_type:
+        main_account: *main_account
+        sub_account_admin: *sub_account_admin
+        sub_account_user: *sub_account_user

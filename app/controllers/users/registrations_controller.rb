@@ -96,10 +96,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new
     @user.build_company
     @user.build_role
-    @user.attributes = devise_parameter_sanitizer(:sign_up)
+    @user.attributes = devise_parameter_sanitizer.sanitize(:sign_up)
     unless @user.individual_use
       tag << :creating_corp
-      @user.company.tel = @user.tels
+      @user.company.tel = @user.tel
     end
     @user.valid?(tag)
   end

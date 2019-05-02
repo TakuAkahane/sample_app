@@ -28,17 +28,6 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %i[edit update]
-  resources :users, except: %i[index show] do
-    member do
-      patch 'manage/change_account_type' => 'users#change_account_type'
-      delete 'manage/destroy_sub_account' => 'users#destroy_sub_account'
-    end
-    collection do
-      get 'manage/users' => 'users#index'
-      get 'manage/change_in_charge' => 'users#change_in_charge'
-      post 'manage/create_account' => 'users#create'
-    end
-  end
 
   # devise関連
   devise_for :users, path: 'users',
@@ -72,5 +61,17 @@ Rails.application.routes.draw do
     get 'users/thanks_f_company' => 'users/registrations#tracking'
     get 'users/thanks_f_personal' => 'users/registrations#tracking'
     get 'users/thanks_unknown_sns' => 'users/registrations#tracking'
+  end
+
+  resources :users, except: %i[index show] do
+    member do
+      patch 'manage/change_account_type' => 'users#change_account_type'
+      delete 'manage/destroy_sub_account' => 'users#destroy_sub_account'
+    end
+    collection do
+      get 'manage/users' => 'users#index'
+      get 'manage/change_in_charge' => 'users#change_in_charge'
+      post 'manage/create_account' => 'users#create'
+    end
   end
 end
