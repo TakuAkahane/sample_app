@@ -15,6 +15,9 @@
     .col-12.col-md-4.mx-auto
       = f.button t('registration'), type: 'submit', class: 'btn btn-deep-orange btn-block btn-lg font-extralarge', data: { disable_with: 'registrating'}
 
+
+= render partial: 'use_selector'
+
 - content_for :local_js do
   javascript:
     $(document).ready(function() {
