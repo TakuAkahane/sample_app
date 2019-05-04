@@ -37,7 +37,7 @@ class User < ApplicationRecord
     validates :email, on: %i[db_auth all]
     validates :new_email, on: %i[change_email]
   end
-  validates :new_email_does_not_duplicate_email, on: %i[change_email]
+  validate :new_email_does_not_duplicate_email, on: %i[change_email]
   validates :password, format: { with: VALID_PASSWORD_REGEX }, presence: true, on: %i[db_auth creating_sub], if: :require_password_validation?
 
   def new_email_does_not_duplicate_email
@@ -67,5 +67,11 @@ class User < ApplicationRecord
   validates :address, presence: true, length: { in: 1..100 }, on: %i[update_profile_main_individual]
   validates :division, allow_blank: true, length: { in: 1..100 }, on: %i[update_profile_corp]
   validates :position, allow_blank: true, length: { in: 1..100 }, on: %i[update_profile_corp]
+
+  def require_password_validation?
+    # SNS認証で会員登録されている場合、パスワードはストアされないため検証不要
+    return false if id.present? && role.account_type.main_account? && !db_auth_registration_completed
+    true
+  end
 
 end
