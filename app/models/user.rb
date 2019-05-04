@@ -14,6 +14,8 @@ class User < ApplicationRecord
          omniauth_providers: %i[google_oauth2 facebook linkedin]
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]{8,30}\z/
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_TEL_REGEX = /\A[0-9]{10,12}\z/
 
   #----------------------------------------------------------------------------#
   # バリデーションのパターン
@@ -33,7 +35,7 @@ class User < ApplicationRecord
   #----------------------------------------------------------------------------#
   # パターン1,3,5,6で利用
   # DB認証の会員登録 /メールアドレス更新 / パスワード変更
-  with_options presence: true, length: { in: 1..100 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i } do
+  with_options presence: true, length: { in: 1..100 }, format: { with: VALID_EMAIL_REGEX } do
     validates :email, on: %i[db_auth all]
     validates :new_email, on: %i[change_email]
   end
@@ -58,7 +60,7 @@ class User < ApplicationRecord
   # 会員登録時のチェック項目
   #----------------------------------------------------------------------------#
   # パターン1,3で利用
-  validates :tel, presence: true, format: { with: /\A[0-9]{10,12}\z/ }, on: %i[creating update_profile_main_individual update_profile_corp]
+  validates :tel, presence: true, format: { with: VALID_TEL_REGEX }, on: %i[creating update_profile_main_individual update_profile_corp]
 
   #----------------------------------------------------------------------------#
   # プロフィール更新時のチェック項目
