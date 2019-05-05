@@ -3,8 +3,14 @@
 
 module Trec
   class Role < ApplicationRecord
+    include TheRole::Api::Role
     include AccountType
 
-    has_many :user
+    has_many :users
+
+    # validate
+    validates :name, length: { maximum: 30 }, presence: true
+    validates :title, length: { maximum: 30 }, presence: true
+    validates :description, length: { maximum: 300 }, presence: true
   end
 end

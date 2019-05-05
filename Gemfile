@@ -128,6 +128,11 @@ gem 'paranoia'
 # ~~~~~~~~~~~~~~~~~ 権限管理 ~~~~~~~~~~~~~~~~~#
 
 gem 'the_role'
+if ENV['RAILS_ENV'] == 'development'
+  gem 'the_role_api'
+  gem 'the_role_management_panel'
+  gem 'the_string_to_slug'
+end
 
 # Other
 group :development do

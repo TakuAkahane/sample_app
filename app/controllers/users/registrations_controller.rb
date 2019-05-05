@@ -17,6 +17,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # インスタンス作成後、会社情報を自動保管するためにbuild_[model]メソッドを実行
     @user = User.new
     @user.build_company
+    @user.role_id = default_registration_role
   end
 
   # POST /resource
@@ -68,6 +69,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   private
+
+  def default_registration_role
+    Setting.find_by(id: 1).light_plan_main_role_id
+  end
 
   def update_company_in_create
     return if resource.individual_use
