@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_04_220526) do
+ActiveRecord::Schema.define(version: 2019_05_06_223931) do
 
   create_table "buy_residential_properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "property_name", null: false
@@ -78,6 +78,10 @@ ActiveRecord::Schema.define(version: 2019_05_04_220526) do
     t.text "mail_signature_admin", comment: "メール署名管理版"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "standard_plan_main_role_id", comment: "スタンダードプランメインユーザID"
+    t.integer "light_plan_main_role_id", comment: "ライトプランメインユーザID"
+    t.integer "trial_plan_main_role_id", comment: "トライアルプランメインユーザID"
+    t.integer "system_owner_main_role_id", comment: "システムオーナーメインユーザID"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -113,6 +117,7 @@ ActiveRecord::Schema.define(version: 2019_05_04_220526) do
     t.boolean "incomplete_sns_registration", comment: "snsを使った会員登録プロセスフラグ"
     t.integer "role_id", comment: "権限ID"
     t.integer "parent_id", comment: "親ユーザID"
+    t.boolean "db_auth_registration_completed", comment: "DB認証利用ユーザ登録フラグ"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

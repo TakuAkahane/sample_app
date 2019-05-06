@@ -1,4 +1,4 @@
-class ChangeRole < ActiveRecord::Migration[5.2]
+class AddDefaultToRoles < ActiveRecord::Migration[5.2]
   def change
     @roles = [
       { id: 3, name: 'standard', title: 'Standard main', description: "スタンダード会員の権限定義です", the_role: '{"users":{}}', parent_id: nil, account_type: 'main_account' },
@@ -16,7 +16,7 @@ class ChangeRole < ActiveRecord::Migration[5.2]
     ]
 
     @roles.each do |role|
-      Role.create(role.merge(created_at: Time.now, updated_at: Time.now))
+      Trec::Role.create(role.merge(created_at: Time.now, updated_at: Time.now))
     end
   end
 end
