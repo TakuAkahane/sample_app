@@ -2,9 +2,15 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  include Roleable
   before_action :configure_permitted_parameters
   before_action :registration_completed?, except: %i[update]
   layout 'single_column'
+  THANKS_KEY = 'user_registration_thanks_session_data'
+
+  def tracking
+    render layout: false
+  end
 
   # GET /resource/sign_up
   def new
@@ -56,8 +62,33 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def edit
   end
 
-  # PUT /resource
+  # PUT /resource account_update_params
+  # devise-x.x.x/app/controllers/devise/registrations_controller.rb に
+  # prepend_before_action :authenticate_scope!, only: [:edit, :update, :destroy]
+  # が定義されているため、guestの場合、prepend_before_actionが優先される
   def update
+    if current_user.terms_of_servise
+      # プロフィールページからのユーザ情報更新
+      unless profile_update_valid?
+        flash.now[:error] = t('msg.error_in_the_input_content')
+        render :profile, layout: 'two_column_side_menu'
+        return
+      end
+    else
+      # 会員登録ページからのユーザ情報更新（SNS登録/サブアカウント）
+      unless update_registration_valid?
+        flash.now[:error] = t('msg.error_in_the_input_content')
+        if current_user.encrypted_password.blank?
+          render :edit
+          return
+        end
+        render :profile, layout: 'two_column_side_menu'
+        return
+      end
+    end
+    success_path = redirect_after_update_path
+    _update(update_param_patern)
+    redirect_to success_path
   end
 
   # DELTE /resource
@@ -65,10 +96,39 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  def thanks
+    @user = { email: session[THANKS_KEY][:email] }
+  end
+
   def index
   end
 
   private
+
+  def _update(param_patern)
+    @user = User.find_by(id: current_user.id)
+    @user.skip_email_validation = true
+    @user.incomplete_sns_registration = false
+    @user.update(devise_parameter_sanitizer.sanitize(param_patern))
+    sns_registration = view_context.registration_process_by_sns?
+    current_user.reload
+    # SNSレジストレーションの場合、ありがとうメール送信
+    if sns_registration
+      MailQueue.entry_mail(:thanks_registration, [@user], values: nil)
+      rec = Setting.find_by(id: 1)
+      to = rec.mail_admin_to
+      MailQueue.entry_admin_mail(:notify_main_account_signup_to_admin, [to], user: @user)
+    end
+    # ここから後処理
+    clear_session_sns_registration if @user.errors.blank? && sns_registration
+    # サブアカウントの場合、passwordを更新するので、ログイン処理を加える
+    bypass_sign_in(@user) unless @user.role.account_type.main_account?
+    flash[:success] = if !sns_registration
+                        t('msg.update_successful', v: t('profile'))
+                      else
+                        t('msg.do_complete', v: t('registration'))
+                      end
+  end
 
   def default_registration_role
     Setting.find_by(id: 1).light_plan_main_role_id
@@ -143,5 +203,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
                                                               :division, :position,
                                                               company_attributes: %i[name site_url tel business establishment capital number_of_employees]])
     devise_parameter_sanitizer.permit(:sub_account_registration, keys: %i[first_name last_name display_name division position])
+  end
+
+  # The path used after sign up.
+  def after_inactive_sign_up_path_for(resource)
+    # super(resource)
+    session[THANKS_KEY] = { email: resource[:email] }
+    if resource.individual_use == true
+      users_thanks_personal_path
+    else
+      users_thanks_company_path
+    end
   end
 end
