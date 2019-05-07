@@ -91,6 +91,8 @@ en:
   main_account: &main_account Main account
   sub_account_admin: &sub_account_admin Sub account admin
   sub_account_user: &sub_account_user Sub account user
+  contact_us: &contact_us Contact us
+  resend_same_email: &resend_same_email Resend to same email address
 
   #---------------------- メッセージ一覧 ----------------------#
   msg:
@@ -109,6 +111,14 @@ en:
     display_fullname_in_the_case_of_blank: 'If not filled in, the first and last name will be displayed'
     register_with_your_company_email_in_case_of_corporate_use: "In the case of corporate use, please register at your company's email address"
     registration_completed_by_sns: 'Member registration has been done with SNS certification. If you need to log in with a password, register on the password change screen after loggin in with SNS authentication'
+    send_email_to_you: 'Sent a confirmation email to the above address.'
+    complete_your_registration: 'Click the link in the email text to complete membership registraion.'
+    not_receive_identification_email: 'If you do not receive your confirmation email'
+    email_address_wrong: 'Did you enter the wrong email address?'
+    include_spam_folder: 'Is it not include in the spam folder?'
+    enable_recept_domains: 'Is it set to enable domain reception?'
+    unable_to_receive_email: 'if you can not receive the email,'
+    please_contact_us: 'Please contact us'
 
   #---------------------- カラム自然言語定義 ----------------------#
   activerecord:
