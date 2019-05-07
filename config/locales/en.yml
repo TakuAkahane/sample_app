@@ -93,6 +93,8 @@ en:
   sub_account_user: &sub_account_user Sub account user
   contact_us: &contact_us Contact us
   resend_same_email: &resend_same_email Resend to same email address
+  about_trec: &about_trec About Tokyo Real Estate Community
+  request_about_media_coverage: &request_about_media_coverage Request about media coverage
 
   #---------------------- メッセージ一覧 ----------------------#
   msg:
@@ -119,6 +121,8 @@ en:
     enable_recept_domains: 'Is it set to enable domain reception?'
     unable_to_receive_email: 'if you can not receive the email,'
     please_contact_us: 'Please contact us'
+    contact_finish_appreciate: 'Thank you for your inquiry.'
+    contact_finish_info: 'We will send back a confirmation email automatically.<br/>If you have any other questions, please feel free to contact us.'
 
   #---------------------- カラム自然言語定義 ----------------------#
   activerecord:
@@ -202,3 +206,6 @@ en:
         main_account: *main_account
         sub_account_admin: *sub_account_admin
         sub_account_user: *sub_account_user
+      inquirytype:
+        about_trec: *about_trec
+        media_coverage: *request_about_media_coverage

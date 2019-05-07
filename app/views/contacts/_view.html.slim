@@ -1,0 +1,40 @@
+.card.mb-4
+  .card-body
+    .mb-4
+      .ml-1.mb-3.font-middle.text-lg-left.custom-grey-text
+        | #{t('inquirytype')}
+        span.badge-pill.badge-danger.pink.lighten-2.font-small.ml-3 #{t('required')}
+      .ml-3.mb-5.text-lg-left.font-middle
+        | #{@contact.inquirytype?}
+
+      .ml-1.mb-3.font-middle.text-lg-left.custom-grey-text
+        | #{t('company_name')}
+      .ml-3.mb-5.text-lg-left.font-middle
+        | #{@contact.company}
+
+      .ml-1.mb-3.font-middle.text-lg-left.custom-grey-text
+        | #{t('name')}
+        span.badge-pill.badge-danger.pink.lighten-2.font-small.ml-3 #{t('required')}
+      .ml-3.row
+        .mb-5.text-lg-left.font-middle
+          | #{@contact.last_name}
+        .ml-2.mb-5.text-lg-left.font-middle
+          | #{@contact.first_name}
+
+        .ml-1.mb-3.font-middle.text-lg-left.custom-grey-text
+          | #{t('email')}
+          span.badge-pill.badge-danger.pink.lighten-2.font-small.ml-3 #{t('required')}
+        .ml-3.mb-5.text-lg-left.font-middle
+          | #{@contact.email}
+
+        .ml-1.mb-3.font-middle.text-lg-left.custom-grey-text
+          | #{t('tel')}
+          span.badge-pill.badge-danger.pink.lighten-2.font-small.ml-3 #{t('required')}
+        .ml-3.mb-5.text-lg-left.font-middle
+          | #{@contact.tel}
+
+        .ml-1.mb-3.font-middle.text-lg-left.custom-grey-text
+          | #{t('content')}
+          span.badge-pill.badge-danger.pink.lighten-2.font-small.ml-3 #{t('required')}
+        .ml-3.mb-5.text-lg-left.font-middle
+          | #{@contact.content}

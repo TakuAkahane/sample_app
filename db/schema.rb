@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_06_223931) do
+ActiveRecord::Schema.define(version: 2019_05_07_224214) do
 
   create_table "buy_residential_properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "property_name", null: false
@@ -49,6 +49,18 @@ ActiveRecord::Schema.define(version: 2019_05_06_223931) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "site_url", limit: 1026, comment: "会社HPのURL"
+  end
+
+  create_table "contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "inquirytype", limit: 30, comment: "問い合わせ種類"
+    t.string "company", limit: 50, comment: "会社名"
+    t.string "first_name", limit: 30, comment: "姓"
+    t.string "last_name", limit: 30, comment: "名"
+    t.string "email", comment: "メールアドレス"
+    t.string "tel", limit: 11, comment: "電話番号"
+    t.text "content", comment: "問い合わせ内容"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

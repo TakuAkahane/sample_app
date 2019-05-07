@@ -1,0 +1,20 @@
+- # パンくず
+- breadcrumb :contacts
+
+= form_for @contact, url: complete_contacts_path do |f|
+  = f.hidden_field :inquirytype
+  = f.hidden_field :company
+  = f.hidden_field :last_name
+  = f.hidden_field :first_name
+  = f.hidden_field :email
+  = f.hidden_field :tel
+  = f.hidden_field :content
+  .row
+    .col-sm-12.col-md-10.col-lg-8.mx-auto
+      = render partial: 'view'
+  .row.justify-content-md-center.mt-4
+    .col-12.col-md-5.mt-2
+      = f.button t('msg.to_submit'), name: 'apply_button', value: 'apply_button', type: 'submit', class: 'btn btn-deep-orange btn-lg btn-block px-0 font-extralarge'
+
+  .border-top.mt-5
+    = f.button t('back'), name: 'back', value: 'back', class: 'btn btn-blue-grey btn-lg mt-3'

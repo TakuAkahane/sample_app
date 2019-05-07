@@ -44,6 +44,11 @@ module AccountType
   extend Enumerize
   enumerize :account_type, in: %i[main_account sub_account_admin sub_account_user], multiple: false
 end
+# お問い合わせの種類
+module InquiryType
+  extend Enumerize
+  enumerize :inquirytype, in: %i[about_trec media_coverage], multiple: false
+end
 
 #----------------------------------------------------------------------------#
 # Activerecord 基底クラス

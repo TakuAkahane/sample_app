@@ -1,0 +1,26 @@
+- # パンくず
+- breadcrumb :contacts
+- required = {required: true}
+
+= form_for @contact, url: confirm_contacts_path, builder: FormHelper::OriginalFormBuilder do |f|
+  .card.col-sm-12.col-md-10.col-lg-8.mx-auto.pt-3
+    .card-body
+      = f.text_area :content, {required: true, label_class: 'font-middle mb-3'}, {row: 5}
+      = f.text_field :company, {form_name: 'company_name', label_class: 'font-middle mb-3'}
+      label.font-middle.mb-3
+        | #{t('name')}
+        span.badge-pill.badge-danger.pink.lighten-2.font-small.ml-3 #{t('required')}
+      .row
+        .col-6
+          = f.text_field :last_name, {label_class: 'custom-grey-text font-middle mb-3'}
+        .col-6
+          = f.text_field :first_name, {label_class: 'custom-grey-text font-middle mb-3'}
+      = f.text_field :email, {required: true, label_class: 'font-middle mb-3'}
+      = f.text_field :tel, {required: true, label_class: 'font-middle mb-3'}
+      label.font-middle.mb-3
+        | #{t('consent_to_submit_personal_information')}
+      = render partial: 'consent_to_submit_personal_information'
+
+    .row.justify-content-center.mt-4
+      .col-12.col-md-6
+        = f.button t('submit_with_consent_to_handle_personal_information'), type: 'submit', class: 'btn btn-deep-orange btn-block btn-lg font-large submit_change_send_to'

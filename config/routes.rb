@@ -8,6 +8,14 @@ Rails.application.routes.draw do
   # userのroot定義
   root 'my#index'
 
+  # お問い合わせ
+  resources :contacts, only: %i[new] do
+    collection do
+      post :confirm
+      post :complete
+    end
+  end
+
   resources :buy_residential_properties, only: %i[] do
     collection do
       # 管理
