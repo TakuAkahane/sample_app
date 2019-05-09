@@ -95,6 +95,8 @@ en:
   resend_same_email: &resend_same_email Resend to same email address
   about_trec: &about_trec About Tokyo Real Estate Community
   request_about_media_coverage: &request_about_media_coverage Request about media coverage
+  top: &top Top
+  tokyo_real_estate_community: &tokyo_real_estate_community Tokyo Real Estate Community
 
   #---------------------- メッセージ一覧 ----------------------#
   msg:

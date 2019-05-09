@@ -16,6 +16,9 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w[*.ico *.eot *.woff *.ttf *.svg *.oft *.png *jpg *jpeg *.gif
                                                  application.css lazy.css
+                                                 mdb.min.js
+                                                 mdb4.7.6/mdb.min.js
+                                                 common.js
                                                  mdb.scss
                                                  cable.jp
                                                  dropzone.js dropzone/*.css

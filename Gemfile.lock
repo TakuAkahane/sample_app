@@ -107,6 +107,7 @@ GEM
       sassc (>= 2.0.0)
     bootstrap-will_paginate (1.0.0)
       will_paginate
+    browser (2.2.0)
     builder (3.2.3)
     bullet (5.9.0)
       activesupport (>= 3.0.0)
@@ -212,8 +213,8 @@ GEM
       ruby_parser
     hashie (3.5.7)
     hpricot (0.8.6)
-    hpricot (0.8.6-i386-mswin32)
     hpricot (0.8.6-java)
+    hpricot (0.8.6-x86-mswin32)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
       haml (>= 4.0, < 6)
@@ -594,6 +595,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   bootstrap-sass
   bootstrap-will_paginate (~> 1.0)
+  browser (~> 2.2.0)
   bullet
   byebug
   cocoon

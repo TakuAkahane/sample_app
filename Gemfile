@@ -20,6 +20,7 @@ gem 'meta-tags'
 gem 'sitemap_generator'
 gem 'mojimoji'
 gem 'rake-remote_task'
+gem 'browser', '~> 2.2.0'
 
 #------------- template engine -------------#
 gem 'erb2haml'
