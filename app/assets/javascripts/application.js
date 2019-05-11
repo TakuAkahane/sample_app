@@ -12,8 +12,3 @@
 //= require i18n
 //= require i18n/translations
 //= require toastr
-
-$(document).on('ready page:load', function(){
-  $.material.init();
-});
-new WOW().init();
