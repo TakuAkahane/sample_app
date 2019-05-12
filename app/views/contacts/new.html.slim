@@ -5,7 +5,7 @@
 = form_for @contact, url: confirm_contacts_path, builder: FormHelper::OriginalFormBuilder do |f|
   .card.col-sm-12.col-md-10.col-lg-8.mx-auto.pt-3
     .card-body
-      = f.text_area :content, {required: true, label_class: 'font-middle mb-3'}, {row: 5}
+      = f.text_area :content, {form_name: 'inquiry', required: true, label_class: 'font-middle mb-3'}, {row: 5}
       = f.text_field :company, {form_name: 'company_name', label_class: 'font-middle mb-3'}
       label.font-middle.mb-3
         | #{t('name')}

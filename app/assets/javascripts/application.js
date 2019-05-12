@@ -3,7 +3,6 @@
 //= require bootstrap-sprockets
 //= require popper.min
 //= require bootstrap.min
-//= require mdb.min
 //= require ie-shim
 //= require jquery_ujs
 //= require autosize
