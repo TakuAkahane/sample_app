@@ -2,6 +2,36 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  def toastr(flash_type, message)
+    # オプション設定
+    toastr = 'toastr.options.timeOut = \'0\';'
+    toastr = 'toastr.options.extendedTimeOut = \'0\';'
+    toastr += 'toastr.options.showDuration = \'300\';'
+    toastr += 'toastr.options.positionClass = \'toast-top-full-width\';'
+    toastr += 'toastr.options.showEasing = \'swing\';'
+    toastr += 'toastr.options.hideEasing = \'linear\';'
+    toastr += 'toastr.options.progressBar = true;'
+    toastr += 'toastr.options.onclick = null;'
+    toastr += 'toastr.options.escapeHtml = false;'
+    toastr += 'toastr.options.closeButton = true;'
+    toastr += 'toastr.options.closeHtml = \<button>&times;</button>\';'
+    toastr += 'toastr.options.preventDuplicates = true;'
+    # ハッシュから必要なメッセージタイプを取得
+    toastr += {
+      success: "toastr.success(\"#{message}\");",
+      error: "toastr.error(\"#{message}\");",
+      alert: "toastr.warning(\"#{message}\");",
+      notice: "toastr.info(\"#{message}\");"
+    }[flash_type.to_sym] || flash_type.to_s
+    # toastrのスクリプトを出力
+    toastr
+  end
+
+  def registration_completed?
+    return true if current_user.terms_of_service
+    false
+  end
+
   # h1タグ作成
   def generate_h1tag
     content_tag :h1, page_title, class: 'mb-0'
