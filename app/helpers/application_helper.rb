@@ -73,4 +73,12 @@ module ApplicationHelper
     end
     alerts.html_safe
   end
+
+  # サインイン後にレジストレーションフォームを表示する場合、メニューを非表示にする。この制御のために用意したメソッド。
+  def display_menus?
+    # ゲストはメニューを表示
+    return true unless user_signed_in?
+    # レジストレーションが終わっている場合、メニューを表示
+    return true if registration_completed?
+  end
 end

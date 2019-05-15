@@ -76,4 +76,8 @@ class User < ApplicationRecord
     true
   end
 
+  def accurate_display_name
+    display_name.present? ? display_name : full_name
+  end
+
 end
