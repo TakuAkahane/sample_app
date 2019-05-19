@@ -76,6 +76,31 @@ class User < ApplicationRecord
     true
   end
 
+  def self.find_from_oauth(auth, role_id)
+    # ユーザが存在しない場合、デフォルトロールと確認メール未送を設定しレコードを作成
+    user = User.where(email: auth.info.email).first
+    if user.blank?
+      user = User.new(create_user_hash_by(auth, role_id))
+      user.skip_confirmation!
+      user.incomplete_sns_registration = true
+      user.save!(validate: false)
+      user.update_attribute(:parent_id, user.id)
+      user = User.where(email: auth.info.email).first
+    end
+    user
+  end
+
+  def self.create_user_hash_by(auth, role_id)
+    {
+      name: auth.info.name,
+      first_name: auth.info.first_name,
+      last_name: auth.info.last_name,
+      image_url: auth.info.image,
+      email: auth.info.email,
+      role_id: role_id
+    }
+  end
+
   def accurate_display_name
     display_name.present? ? display_name : full_name
   end

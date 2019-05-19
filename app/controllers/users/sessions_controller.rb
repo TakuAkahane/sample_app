@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
+  include Accessible
   layout 'single_column_no_title'
 
   # GET /resource/sign_in
