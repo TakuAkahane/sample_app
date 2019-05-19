@@ -333,5 +333,45 @@ module FormHelper
       end
     end
 
+    # form_nameが'blank'の場合は、タイトル・項目を表示しない。argsにidが有る場合はidとforにそれを適用。argsにvalueがある場合はnameとvalueにそれを適用。
+    def single_checkbox(attribute, item_text, label_args = {}, args = {})
+      required, form_name, readonly = extend_args(label_args)
+      label_class = label_class(label_args, 'active position-static mt-3 mb-0')
+      @template.content_tag(:div, class: line_class(label_args, 'md-form mx-auto')) do
+        unless form_name = 'blank'
+          label = I18n.t(form_name.present? ? form_name : attribute)
+          @template.concat(
+            @template.content_tag(:label, class: label_class) do
+              @template.concat(
+                @template.content_tag(:span, label)
+              )
+              if required
+                @template.concat(
+                  @template.content_tag(:span, I18n.t('required'), class: 'badge-pill badge-danger pink lighten-2 font-small ml-3')
+                )
+              end
+            end
+          )
+        end
+        class_name = form_name == 'blank' ? 'selecting-form custom-control custom-checkbox' : 'selecting-form custom-checkbox with-title ml-md-3'
+        input_class_name = args[:value].present? ? "custom-control-input #{args[:class]}" : "custom-control-input"
+        @template.concat(
+          @template.content_tag(:div, class: class_name) do
+            # チェックボックスが選択されていない場合、falseを送信
+            @template.concat(
+              hidden_field(attribute, value: false)
+            )
+            @template.concat(
+              check_box(args.key?(:value) && attribute != :id ? args[:value] : attribute, { multiple: false, id: args.key?(:id) ? args[:id] : original_id(attribute) }.merge(readonly ? args.merge(disabled: true, readonly: true) : args).merge(class: input_class_name), args.key?(:value) ? args[:value] : attribute == :id ? "_#{@object.id}" : I18n.t(attribute), nil)
+            )
+            @template.concat(
+              @template.content_tag(:label, item_text.present? ? I18n.t(item_text).html_safe : '', class: 'custom-controll-label', for: args.key?(:id) ? args[:id] : original_id(attribute))
+            )
+          end
+        )
+        @template.concat(error_tag(attribute))
+      end
+    end
+
   end
 end
