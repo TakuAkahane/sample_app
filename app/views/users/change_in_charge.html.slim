@@ -1,0 +1,15 @@
+.row
+  = form_for(@user, url: manage_destroy_sub_account_user_path(@user), builder: FormHelper::OriginalFormBuilder, html: {method: 'DELETE', id: 'delete_modal_form'}) do |f|
+    .col-12.mx-auto
+      - if @require_in_charge
+        p.font-middle.pb-4 #{t('msg.select_account_in_charge')}
+      label.font-middle.mb-3.d-block = t('msg.deleting_user')
+      p.mb-5 = @user.full_name
+      - if @require_in_charge
+        = f.single_dropdown_list :change_in_charge_uid, current_user.my_accounts_options, {include_blank: 'msg.please_select'}, {form_name: 'msg.in_charge_user', label_class: 'font-middle mb-3', line_class: 'mx-auto mb-0'}
+      = f.hidden_field :id
+
+javascript:
+  $(document).ready(function(){
+    $('#change_in_charge_uid_field').material_select();
+  });

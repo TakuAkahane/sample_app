@@ -1,0 +1,17 @@
+/ ダイアログの共通レイアウトを出力する
+/ 引数1 ダイアログのタイトル
+/ 引数2 ダイアログのid
+/ 引数3 配置するボタンの定義
+- buttons = { cancel_buttons: {title: t('cancel')},
+              action_buttons: {title: t('delete'), class: 'destroy-account-action', delete: true} }
+
+/ アカウント削除ダイアログ
+= DialogHelper.standard_dialog(t('delete_account'), 'destroy-account-modal', buttons)
+
+/ サーバーへのリクエスト
+- content_for :local_js do
+  javascript:
+    $(document).ready(function() {
+      //サブアカウント削除ボタンクリック契機のモーダルダイアログ表示
+      
+    })

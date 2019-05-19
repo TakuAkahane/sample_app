@@ -1,0 +1,8 @@
+.row
+  = form_for(@user, url: manage_change_account_type_user_path(@user), builder: FormHelper::OriginalBuilder, html: {id: 'modal_form'}) do |f|
+    .col-12.mx-auto
+      label.font-middle.mb-3.d-block = t('full_name')
+      p.mb-5 = @user.full_name
+      = f.fields_for @user.role do |r|
+        = r.standard_radio_buttons :account_type, Trec::Role.account_type.options(except: :main_account), {label_class: 'font-middle mb-3', form_inline: true}
+        = f.hidden_field :id
