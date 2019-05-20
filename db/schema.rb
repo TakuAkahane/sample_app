@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_07_224214) do
+ActiveRecord::Schema.define(version: 2019_05_20_220503) do
 
   create_table "buy_residential_properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "property_name", null: false
@@ -59,6 +59,20 @@ ActiveRecord::Schema.define(version: 2019_05_07_224214) do
     t.string "email", comment: "メールアドレス"
     t.string "tel", limit: 11, comment: "電話番号"
     t.text "content", comment: "問い合わせ内容"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "investment_property_search_conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "user_id", comment: "ユーザID"
+    t.text "params", comment: "パラメータ"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "residential_property_search_conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "user_id", comment: "ユーザID"
+    t.text "params", comment: "パラメータ"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

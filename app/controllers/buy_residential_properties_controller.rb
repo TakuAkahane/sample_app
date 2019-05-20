@@ -1,7 +1,7 @@
 # encoding: utf-8
 # frozen_string_literal: true
 
-class BuyResidentialPropertiesController < ApplicationController
+class BuyResidentialPropertiesController < BizmatchController
   layout 'single_column'
 
   def new
@@ -39,11 +39,29 @@ class BuyResidentialPropertiesController < ApplicationController
   end
 
   def active
+    init_classes
+    @search_condition = create_search_condition
+    accordion_control(@search_condition)
+    @search_condition = confirm_switch_type(@search_condition)
+    @search_condition = confirm_sort_type(@search_condition)
+    @search_condition.frequently_searched_keyword = residential_property_frequently_searched_keyword_array
+    validate_bookmark_filter?
+    session[:search_residential_property_path] = request.fullpath
     @residential_properties = BuyResidentialProperty.all.paginate(page: params[:page], per_page: 12)
+    return redirect_to(@search_condition.url) if @serach_condition.params.present?
     render layout: 'two_column_side_search'
   end
 
+  def search_condition_params
+    ActionController::Parameters.new
+  end
+
   private
+
+  def init_classes
+    @bizmatch_condition_model = ResidentialPropertySearchCondition
+    @bizmatch_condition_controller = ResidentialPropertySearchConditionController
+  end
 
   def create_new_property
     new_property = BuyResidentialProperty.new(buy_residential_properties_params)
