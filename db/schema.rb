@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_20_220503) do
+ActiveRecord::Schema.define(version: 2019_05_21_232511) do
+
+  create_table "buy_investment_properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name", null: false, comment: "物件名"
+    t.integer "ward_id", null: false, comment: "区ID"
+    t.string "address", null: false, comment: "住所"
+    t.integer "price", null: false, comment: "金額"
+    t.string "floore_plan", null: false, comment: "間取り"
+    t.integer "floore_size", null: false, comment: "専有面積"
+    t.integer "floore_level", null: false, comment: "階数"
+    t.datetime "completion_date", null: false, comment: "建築日"
+    t.string "property_type", null: false, comment: "住居タイプ"
+    t.integer "balcony_size", comment: "ベランダ面積"
+    t.string "balcony_direction", null: false, comment: "ベランダ向き"
+    t.integer "total_number_of_houses", null: false, comment: "総住戸数"
+    t.string "rights_concening_land", null: false, comment: "権利"
+    t.string "management_company", comment: "管理会社名"
+    t.integer "management_fee", null: false, comment: "管理費"
+    t.integer "repair_reserve_fund", null: false, comment: "修繕積立金"
+    t.datetime "handover_date", null: false, comment: "引き渡し日"
+    t.text "transportation", null: false, comment: "交通手段"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "buy_residential_properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "property_name", null: false
@@ -86,6 +109,29 @@ ActiveRecord::Schema.define(version: 2019_05_20_220503) do
     t.string "account_type", comment: "アカウント種類"
     t.integer "default_corporate", limit: 1, comment: "デフォルト設定（会社）"
     t.boolean "default_individual", comment: "デフォルト設定（個人）"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sell_properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name", null: false, comment: "物件名"
+    t.integer "ward_id", null: false, comment: "区ID"
+    t.string "address", null: false, comment: "住所"
+    t.integer "price", null: false, comment: "金額"
+    t.string "floore_plan", null: false, comment: "間取り"
+    t.integer "floore_size", null: false, comment: "専有面積"
+    t.integer "floore_level", null: false, comment: "階数"
+    t.datetime "completion_date", null: false, comment: "建築日"
+    t.string "property_type", null: false, comment: "住居タイプ"
+    t.integer "balcony_size", comment: "ベランダ面積"
+    t.string "balcony_direction", null: false, comment: "ベランダ向き"
+    t.integer "total_number_of_houses", null: false, comment: "総住戸数"
+    t.string "rights_concening_land", null: false, comment: "権利"
+    t.string "management_company", comment: "管理会社名"
+    t.integer "management_fee", null: false, comment: "管理費"
+    t.integer "repair_reserve_fund", null: false, comment: "修繕積立金"
+    t.datetime "handover_date", null: false, comment: "引き渡し日"
+    t.text "transportation", null: false, comment: "交通手段"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

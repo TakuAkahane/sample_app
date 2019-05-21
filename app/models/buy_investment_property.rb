@@ -1,0 +1,2 @@
+class BuyInvestmentProperty < ApplicationRecord
+end
