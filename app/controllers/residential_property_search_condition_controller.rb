@@ -11,7 +11,7 @@ class ResidentialPropertySearchConditionController < BizmatchController
   def search
     init_classes
     @search_condition = create_search_condition
-    accordion_control(@search_condition)
+    according_control(@search_condition)
     return if @search_condition == false
     @search_condition.frequently_searched_keyword = residential_property_frequently_searched_keyword_array
     @residential_properties = @search_condition.search(paginate_option, current_user)

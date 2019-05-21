@@ -41,14 +41,14 @@ class BuyResidentialPropertiesController < BizmatchController
   def active
     init_classes
     @search_condition = create_search_condition
-    accordion_control(@search_condition)
+    according_control(@search_condition)
     @search_condition = confirm_switch_type(@search_condition)
     @search_condition = confirm_sort_type(@search_condition)
     @search_condition.frequently_searched_keyword = residential_property_frequently_searched_keyword_array
     validate_bookmark_filter?
     session[:search_residential_property_path] = request.fullpath
     @residential_properties = BuyResidentialProperty.all.paginate(page: params[:page], per_page: 12)
-    return redirect_to(@search_condition.url) if @serach_condition.params.present?
+    return redirect_to(@search_condition.url) if @search_condition.params.present?
     render layout: 'two_column_side_search'
   end
 

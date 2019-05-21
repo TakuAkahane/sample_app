@@ -36,7 +36,7 @@ class BizmatchController < ApplicationController
 
     if search_condition.nil?
       search_condition = bizmatch_condition_model.new
-      serach_condition.user_id = current_user.id if user_signed_in? && bizmatch_condition_model.name != Company.name
+      search_condition.user_id = current_user.id if user_signed_in? && bizmatch_condition_model.name != Company.name
     end
     search_condition.attributes = search_condition_params if search_condition_params.present?
     search_condition.sort_type = params.permit(:sort_type).present? ? params.permit(:sort_type)[:sort_type] : 'updated_at'
@@ -48,7 +48,7 @@ class BizmatchController < ApplicationController
 
   # 指定されたブックマークフィルターをモデルクラスのurl パラメータに付与する（探す系のサービスのメソッド）
   def confirm_switch_type(search_condition)
-    return serach_condition if params[:switch_type].nil?
+    return search_condition if params[:switch_type].nil?
 
     if params[:switch_type] == 'all' || (params[:switch_type] == 'bookmark' && user_signed_in?)
       search_condition.params = replace_switch_parameter(search_condition.params, params[:switch_type])
@@ -58,7 +58,7 @@ class BizmatchController < ApplicationController
 
   # 指定されたソートをモデルクラスのパラメータに設定
   def confirm_sort_type(search_condition)
-    serach_condition.sort_type = params.permit(:sort_type).present? ? params.permit(:sort_type)[:sort_type] : 'updated_at'
+    search_condition.sort_type = params.permit(:sort_type).present? ? params.permit(:sort_type)[:sort_type] : 'updated_at'
     search_condition
   end
 
@@ -68,8 +68,8 @@ class BizmatchController < ApplicationController
   end
 
   # 「探す」系サービスであることを確認
-  def serach_searvice?(search_condition)
-    search_condition.is_a?(ResidentialSearchCondition) || search_condition.is_a?(InvestmentPropertySearchCondition)
+  def search_searvice?(search_condition)
+    search_condition.is_a?(ResidentialPropertySearchCondition) || search_condition.is_a?(InvestmentPropertySearchCondition)
   end
 
   # 「探す」系のパラメータがあるか確認
