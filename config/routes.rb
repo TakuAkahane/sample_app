@@ -16,25 +16,51 @@ Rails.application.routes.draw do
     end
   end
 
+  # 居住用物件
   resources :buy_residential_properties, only: %i[] do
     collection do
       # 管理
-      get 'manage/new' => 'buy_residential_properties#new'
       get 'manage/index' => 'buy_residential_properties#index'
+      get 'manage/new' => 'buy_residential_properties#new'
+      post 'manage/preview' => 'buy_residential_properties#preview'
+      patch 'manage/preview' => 'buy_residential_properties#preview'
       post 'manage/create' => 'buy_residential_properties#create'
+      post 'manage/create_draft' => 'buy_residential_properties#create_draft'
+      patch 'manage/update_memo' => 'buy_residential_properties#update_memo'
       # 検索
       get :active
+      post :revise
     end
     member do
       # 管理
       get 'manage/view' => 'buy_residential_properties#view'
-      get 'manage/detail' => 'buy_residential_properties#detail'
       get 'manage/edit' => 'buy_residential_properties#edit'
-      delete 'manage/delete' => 'buy_residential_properties#delete'
       patch 'manage/update' => 'buy_residential_properties#update'
+      patch 'manage/update_draft' => 'buy_residential_properties#update_draft'
+      get 'manage/detail' => 'buy_residential_properties#detail'
+      delete 'manage/delete' => 'buy_residential_properties#delete'
+      # 検索
+      get :detail
+      get 'category' => 'buy_residential_properties#category'
+    end
+  end
+  # よく検索されるキーワード
+  get 'buy_residential_properties/:keyword' => 'buy_residential_properties#keyword', as: 'buy_residential_properties_keyword'
+
+  resources :residential_properties_manage_conditions, only: %i[destroy] do
+    collection do
+      post :save_manage_condition
+      get :search
+    end
+  end
+  resources :residential_properties_search_conditions, only: %i[destroy] do
+    collection do
+      post :save_search_condition
+      get :search
     end
   end
 
+  # ユーザ関連
   resources :users, only: %i[edit update]
 
   # devise関連
