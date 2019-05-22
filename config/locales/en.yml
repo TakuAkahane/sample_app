@@ -100,6 +100,11 @@ en:
   inquiry: &inquiry Inquiry
   free_keyword: &free_keyword Free keyword
 
+  time:
+    formats:
+      curtail: "%y/%m/%d"
+      middle: "%y %m %d"
+
   #---------------------- メッセージ一覧 ----------------------#
   msg:
     error_in_the_input_content: 'The input content is incorrect'

@@ -81,4 +81,14 @@ module ApplicationHelper
     # レジストレーションが終わっている場合、メニューを表示
     return true if registration_completed?
   end
+
+  # 日付表示変換
+  def date_at_translation(date_at)
+    l(date_at, format: :middle) if date_at.present?
+  end
+
+  # 日付表示変換
+  def date_at_translation_in_curtail(date_at)
+    l(date_at, format: :middle) if date_at.present?
+  end
 end
