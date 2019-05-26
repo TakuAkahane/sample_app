@@ -8,6 +8,28 @@ Rails.application.routes.draw do
   # userのroot定義
   root 'my#index'
 
+  # レコメンド
+  resources :recommends, only: %i[] do
+    collection do
+      # 管理
+      get 'manage/index' => 'recommends#index'
+      get 'manage/new' => 'recommends#new'
+      post 'manage/create' => 'recommends#create'
+      # 検索
+      get :active
+    end
+    member do
+      # 管理
+      get 'manage/view' => 'recommends#view'
+      get 'manage/edit' => 'recommends#edit'
+      patch 'manage/update' => 'recommends#update'
+      get 'manage/detail' => 'recommends#detail'
+      delete 'manage/delete' => 'recommends#delete'
+      # 検索
+      get :detail
+    end
+  end
+
   # お問い合わせ
   resources :contacts, only: %i[new] do
     collection do
