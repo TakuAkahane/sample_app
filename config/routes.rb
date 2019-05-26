@@ -38,6 +38,88 @@ Rails.application.routes.draw do
     end
   end
 
+  # 物件売却
+  resources :sell_properties, only: %i[] do
+    collection do
+      # 管理
+      get 'manage/index' => 'sell_properties#index'
+      get 'manage/new' => 'sell_properties#new'
+      post 'manage/create' => 'sell_properties#create'
+      # 検索
+      get :active
+    end
+    member do
+      # 管理
+      get 'manage/view' => 'sell_properties#view'
+      get 'manage/edit' => 'sell_properties#edit'
+      patch 'manage/update' => 'sell_properties#update'
+      get 'manage/detail' => 'sell_properties#detail'
+      delete 'manage/delete' => 'sell_properties#delete'
+      # 検索
+      get :detail
+    end
+  end
+  # よく検索されるキーワード
+  get 'sell_properties/:keyword' => 'sell_properties#keyword', as: 'sell_properties_keyword'
+
+  resources :sell_properties_manage_conditions, only: %i[destroy] do
+    collection do
+      post :save_manage_condition
+      get :search
+    end
+  end
+  resources :sell_properties_search_conditions, only: %i[destroy] do
+    collection do
+      post :save_search_condition
+      get :search
+    end
+  end
+
+
+  # 投資用物件
+  resources :buy_investment_properties, only: %i[] do
+    collection do
+      # 管理
+      get 'manage/index' => 'buy_investment_properties#index'
+      get 'manage/new' => 'buy_investment_properties#new'
+      post 'manage/preview' => 'buy_investment_properties#preview'
+      patch 'manage/preview' => 'buy_investment_properties#preview'
+      post 'manage/create' => 'buy_investment_properties#create'
+      post 'manage/create_draft' => 'buy_investment_properties#create_draft'
+      patch 'manage/update_memo' => 'buy_investment_properties#update_memo'
+      # 検索
+      get :active
+      post :revise
+    end
+    member do
+      # 管理
+      get 'manage/view' => 'buy_investment_properties#view'
+      get 'manage/edit' => 'buy_investment_properties#edit'
+      patch 'manage/update' => 'buy_investment_properties#update'
+      patch 'manage/update_draft' => 'buy_investment_properties#update_draft'
+      get 'manage/detail' => 'buy_investment_properties#detail'
+      delete 'manage/delete' => 'buy_investment_properties#delete'
+      # 検索
+      get :detail
+      get 'category' => 'buy_investment_properties#category'
+    end
+  end
+  # よく検索されるキーワード
+  get 'buy_investment_properties/:keyword' => 'buy_investment_properties#keyword', as: 'buy_investment_properties_keyword'
+
+  resources :investment_properties_manage_conditions, only: %i[destroy] do
+    collection do
+      post :save_manage_condition
+      get :search
+    end
+  end
+  resources :investment_properties_search_conditions, only: %i[destroy] do
+    collection do
+      post :save_search_condition
+      get :search
+    end
+  end
+
   # 居住用物件
   resources :buy_residential_properties, only: %i[] do
     collection do

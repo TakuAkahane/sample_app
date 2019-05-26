@@ -9,4 +9,13 @@ class RecommendsController < ApplicationController
 
   def index
   end
+
+  def edit
+  end
+
+  def delete
+  end
+
+  def active
+  end
 end
