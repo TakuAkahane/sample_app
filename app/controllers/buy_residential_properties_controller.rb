@@ -44,7 +44,7 @@ class BuyResidentialPropertiesController < BizmatchController
     according_control(@search_condition)
     @search_condition = confirm_switch_type(@search_condition)
     @search_condition = confirm_sort_type(@search_condition)
-    @search_condition.frequently_searched_keyword = residential_property_frequently_searched_keyword_array
+    @search_condition.frequently_searched_keyword = ResidentialFrequentlySearchedKeyword.where(often_search_keyword: true)
     validate_bookmark_filter?
     session[:search_residential_property_path] = request.fullpath
     @residential_properties = BuyResidentialProperty.all.paginate(page: params[:page], per_page: 12)

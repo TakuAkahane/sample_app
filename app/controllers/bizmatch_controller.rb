@@ -81,11 +81,6 @@ class BizmatchController < ApplicationController
     true
   end
 
-  # 住居用物件で使うよく検索されるキーワード一覧
-  def residential_property_frequently_searched_keyword_array
-    %w[Big Fancy]
-  end
-
   #----------------------------------------------------------------------------#
   # URLパラメータを変換するメソッド群
   #----------------------------------------------------------------------------#
