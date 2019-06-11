@@ -1,0 +1,5 @@
+- case controller.action_name
+- when 'index'
+  = render partial: 'recommend_manage_side_navi'
+- when 'active', 'keyword', 'category_page'
+  = render partial: 'recommend_search_side_navi'

@@ -5,6 +5,7 @@ class RecommendsController < ApplicationController
   layout 'single_column'
 
   def new
+    @recommend = Recommend.new
   end
 
   def index
@@ -17,5 +18,6 @@ class RecommendsController < ApplicationController
   end
 
   def active
+    render layout: 'two_column_side_search'
   end
 end
