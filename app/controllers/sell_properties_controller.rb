@@ -5,6 +5,7 @@ class SellPropertiesController < ApplicationController
   layout 'single_column'
 
   def new
+    @sell_property = SellProperty.new
   end
 
   def index
