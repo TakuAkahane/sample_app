@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_13_230229) do
+ActiveRecord::Schema.define(version: 2019_06_15_075838) do
 
   create_table "buy_investment_properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "property_name", null: false
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_230229) do
     t.text "transportation", null: false, comment: "交通手段"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "selling_reason", comment: "売却理由"
   end
 
   create_table "settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

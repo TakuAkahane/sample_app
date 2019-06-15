@@ -99,6 +99,20 @@ en:
   tokyo_real_estate_community: &tokyo_real_estate_community Tokyo Real Estate Community
   inquiry: &inquiry Inquiry
   free_keyword: &free_keyword Free keyword
+  holder: &holder Holder
+  holders_relatives: &holders_relatives Holders Relatives
+  agent_with_authority: &agent_with_authority Agent with authority
+  land_holder: &land_holder Land holder
+  building_holder: &building_holder Building Holder
+  corporation_name: &corporation_name Corporation name
+  shared_name: &shared_name Shared name
+  replacement_with_property: &replacement_with_property Replacement with property
+  replacement_without_property: &replacement_without_property Replacement without property
+  inheritance: &inheritance Inheritance
+  transfer: &transfer Transfer
+  surplus_asset_sale: &surplus_asset_sale Surplus asset sale
+  asset_consolidation: &asset_consolidation Asset consolidation
+  other: &other Other
 
   time:
     formats:
@@ -218,3 +232,19 @@ en:
       inquirytype:
         about_trec: *about_trec
         media_coverage: *request_about_media_coverage
+      relationship_with_property:
+        holder: *holder
+        holders_relatives: *holders_relatives
+        agent_with_authority: *agent_with_authority
+        land_holder: *land_holder
+        building_holder: *building_holder
+        corporation_name: * corporation_name
+        shared_name: *shared_name
+      selling_reason:
+        replacement_with_property: *replacement_with_property
+        replacement_without_property: *replacement_without_property
+        inheritance: *inheritance
+        transfer: *transfer
+        surplus_asset_sale: *surplus_asset_sale
+        asset_consolidation: *asset_consolidation
+        other: *other
