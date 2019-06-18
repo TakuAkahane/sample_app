@@ -54,14 +54,14 @@ module RelationshipWithProperty
   extend Enumerize
   enumerize :relationship_with_property, in: %i[holder holders_relatives agent_with_authority
                                                 land_holder building_holder corporation_name
-                                                shared_name]
+                                                shared_name], multiple: true
 end
 # 売却理由
-module  SellingReason
+module SellingReason
   extend Enumerize
   enumerize :selling_reason, in: %i[replacement_with_property replacement_without_property
                                     inheritance transfer surplus_asset_sale asset_consolidation
-                                    other]
+                                    other], multiple: true
 end
 
 #----------------------------------------------------------------------------#

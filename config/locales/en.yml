@@ -238,7 +238,7 @@ en:
         agent_with_authority: *agent_with_authority
         land_holder: *land_holder
         building_holder: *building_holder
-        corporation_name: * corporation_name
+        corporation_name: *corporation_name
         shared_name: *shared_name
       selling_reason:
         replacement_with_property: *replacement_with_property
