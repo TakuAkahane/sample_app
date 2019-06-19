@@ -2,8 +2,9 @@
 bfdd2243f0de298547b2dc199e9a671cf72ccde6		branch '5.x' of https://github.com/elastic/elasticsearch-rails
 c73c5a468aa475b898e82409442debd6f3ff1d3a		branch '6.x' of https://github.com/elastic/elasticsearch-rails
 6f0bb1ae104fc768fee7015d43ae946d9daf6aae		branch 'docker' of https://github.com/elastic/elasticsearch-rails
+e5d8bf926718df0177952496ae17096fffdb5c74		branch 'fix-travis' of https://github.com/elastic/elasticsearch-rails
 fb8bfd91f6f5f9c1473dd920738456bb1114bcdc		branch 'issues/107' of https://github.com/elastic/elasticsearch-rails
-00596345ec1c22d177603dcdde7d6422a7cf8de7		branch 'master' of https://github.com/elastic/elasticsearch-rails
+f9e86dec7e90f5a334602e85dfffdcb69215c27c		branch 'master' of https://github.com/elastic/elasticsearch-rails
 91814b30380f5d7517e3a4dd845ff8932f2dd997		branch 'persistence' of https://github.com/elastic/elasticsearch-rails
 b21e959fb87c86680db4c164f1407f19588c1432		branch 'persistence-model' of https://github.com/elastic/elasticsearch-rails
 2f2c0fb7a25ece68fd3a9eec7b9026848e66fa4f		branch 'searchapp_dsl' of https://github.com/elastic/elasticsearch-rails
@@ -32,3 +33,4 @@ a945146c61193c490f642decf191ec63f74ac8e2	not-for-merge	tag 'v5.0.0' of https://g
 8c0ccb8d3c5f4f976df5d1f1f78fd37b6a929abd	not-for-merge	tag 'v5.1.0' of https://github.com/elastic/elasticsearch-rails
 6e426690d23f70888029d109401ccead2119152b	not-for-merge	tag 'v6.0.0' of https://github.com/elastic/elasticsearch-rails
 9f1abfa3f02952cf223da2bb8a7b92c12188f8f1	not-for-merge	tag 'v6.0.0.pre' of https://github.com/elastic/elasticsearch-rails
+cd3b0b4045ed34be5710cd185d4617509dc20437	not-for-merge	tag 'v7.0.0.pre' of https://github.com/elastic/elasticsearch-rails
