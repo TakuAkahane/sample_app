@@ -179,25 +179,34 @@ end
 
 #------------- testing tools -------------#
 group :development, :test do
+  gem 'bullet'
   gem 'minitest'
   gem 'minitest-rails'
   gem 'test-unit' if RUBY_VERSION >= '2.2'
 
   gem 'database_cleaner'
   gem 'factory_bot_rails'
+  gem 'parallel_tests'
 
   gem 'rspec-core'
   gem 'rspec-expectations'
   gem 'rspec-mocks'
   gem 'rspec-rails'
   gem 'rspec-support'
-  gem 'bullet'
+
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'turnip'
+end
 
 #------------- その他 -------------#
-  gem 'bootsnap', '>= 1.1.0', require: false
-  gem 'mini_racer'
+gem 'bootsnap', '>= 1.1.0', require: false
+gem 'mini_racer'
+
+gem 'mime-types'
+gem 'rack-attack', '~> 5.0.1'
+gem 'whenever', '~> 0.10.0', :require => false
 
 #------------- original -------------#
-  # material design for bootstrap pro
-  gem 'trecmdb', path: '../trecmdb'
-end
+# material design for bootstrap pro
+gem 'trecmdb', path: '../trecmdb'

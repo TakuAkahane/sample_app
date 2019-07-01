@@ -113,7 +113,19 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     byebug (11.0.1)
+    c21e (1.1.9)
     callsite (0.0.11)
+    capybara (3.25.0)
+      addressable
+      mini_mime (>= 0.1.3)
+      nokogiri (~> 1.8)
+      rack (>= 1.6.0)
+      rack-test (>= 0.6.3)
+      regexp_parser (~> 1.5)
+      xpath (~> 3.2)
+    childprocess (1.0.1)
+      rake (< 13.0)
+    chronic (0.10.2)
     cocoon (1.2.12)
     codeclimate-engine-rb (0.4.1)
       virtus (~> 1.0)
@@ -129,6 +141,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
+    cucumber-messages (2.1.2)
+      google-protobuf (>= 3.2, <= 3.7)
     data-confirm-modal (1.6.2)
       railties (>= 3.0)
     database_cleaner (1.7.0)
@@ -193,9 +207,15 @@ GEM
     font-awesome-rails (4.7.0.4)
       railties (>= 3.2, < 6.0)
     geocoder (1.5.1)
+    gherkin (6.0.17)
+      c21e (~> 1.1.9)
+      cucumber-messages (~> 2.1.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     gmaps4rails (2.1.2)
+    google-protobuf (3.7.0)
+    google-protobuf (3.7.0-x64-mingw32)
+    google-protobuf (3.7.0-x86-mingw32)
     gretel (3.0.9)
       rails (>= 3.1.0)
     haml (5.0.4)
@@ -343,6 +363,8 @@ GEM
     open4 (1.3.4)
     orm_adapter (0.5.0)
     parallel (1.14.0)
+    parallel_tests (2.29.1)
+      parallel
     paranoia (2.4.1)
       activerecord (>= 4.0, < 5.3)
     parser (2.6.2.0)
@@ -373,6 +395,8 @@ GEM
     puma (3.12.1)
     puma (3.12.1-java)
     rack (2.0.6)
+    rack-attack (5.0.1)
+      rack
     rack-contrib (2.1.0)
       rack (~> 2.0)
     rack-test (1.1.0)
@@ -420,9 +444,14 @@ GEM
       parser (>= 2.5.0.0, < 2.7, != 2.5.1.1)
       psych (~> 3.1.0)
       rainbow (>= 2.0, < 4.0)
+    regexp_parser (1.5.1)
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
+    rspec (3.8.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.2)
@@ -464,6 +493,7 @@ GEM
       ruby_parser (~> 3.8)
       tty-which (~> 0.4.0)
       virtus (~> 1.0)
+    rubyzip (1.2.3)
     sass (3.7.3)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -484,6 +514,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    selenium-webdriver (3.142.3)
+      childprocess (>= 0.5, < 2.0)
+      rubyzip (~> 1.2, >= 1.2.2)
     sequel (5.18.0)
     sexp_processor (4.12.0)
     sitemap_generator (6.0.2)
@@ -538,6 +571,9 @@ GEM
     toastr-rails (1.0.3)
       railties (>= 3.1.0)
     tty-which (0.4.0)
+    turnip (4.0.1)
+      gherkin (~> 6.0.17)
+      rspec (>= 3.0, < 4.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.1.20)
@@ -568,12 +604,16 @@ GEM
     websocket-driver (0.7.0-java)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
+    whenever (0.10.0)
+      chronic (>= 0.6.3)
     wicked_pdf (1.2.1)
       activesupport
     will_paginate (3.1.7)
     wkhtmltopdf-binary (0.12.4)
     wysiwyg-rails (2.9.3)
       railties (>= 3.2, < 6.0)
+    xpath (3.2.0)
+      nokogiri (~> 1.8)
 
 PLATFORMS
   java
@@ -598,6 +638,7 @@ DEPENDENCIES
   browser (~> 2.2.0)
   bullet
   byebug
+  capybara
   cocoon
   coffee-rails (~> 4.2)
   data-confirm-modal
@@ -633,6 +674,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   meta-tags
   meta_request
+  mime-types
   mini_racer
   minitest
   minitest-rails
@@ -644,11 +686,13 @@ DEPENDENCIES
   omniauth-facebook (>= 4.0.0)
   omniauth-google-oauth2
   omniauth-linkedin-oauth2
+  parallel_tests
   paranoia
   pry-alias
   pry-byebug
   pry-rails
   puma (~> 3.11)
+  rack-attack (~> 5.0.1)
   rails-assets-tether (~> 1.4.3)!
   rake-remote_task
   redis
@@ -664,6 +708,7 @@ DEPENDENCIES
   sass
   sass-rails (~> 5.0)
   sassc-rails
+  selenium-webdriver
   sequel
   sitemap_generator
   slim
@@ -675,8 +720,10 @@ DEPENDENCIES
   the_role
   toastr-rails
   trecmdb!
+  turnip
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
+  whenever (~> 0.10.0)
   wicked_pdf
   will_paginate
   wkhtmltopdf-binary
