@@ -113,6 +113,9 @@ en:
   surplus_asset_sale: &surplus_asset_sale Surplus asset sale
   asset_consolidation: &asset_consolidation Asset consolidation
   other: &other Other
+  apartments: &apartments Apartments
+  apartment_block: &apartment_block Apartment block
+  commercial_building: &commercial_building Commercial Building
 
   time:
     formats:
@@ -248,3 +251,7 @@ en:
         surplus_asset_sale: *surplus_asset_sale
         asset_consolidation: *asset_consolidation
         other: *other
+      building_classification:
+        apartments: *replacement_with_property
+        apartment_block: *apartment_block
+        commercial_building: *commercial_building

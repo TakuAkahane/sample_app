@@ -63,6 +63,11 @@ module SellingReason
                                     inheritance transfer surplus_asset_sale asset_consolidation
                                     other], multiple: true
 end
+# 物件種別
+module BuildingClassification
+  extend Enumerize
+  enumerize :building_classification, in: %i[apartments apartment_block commercial_building], multiple: true
+end
 
 #----------------------------------------------------------------------------#
 # Activerecord 基底クラス
