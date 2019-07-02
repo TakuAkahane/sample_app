@@ -21,6 +21,11 @@ html
     = render :partial => 'layouts/footer'
 
   = javascript_include_tag "application"
+  - if browser.ie?
+    = javascript_include_tag "mdb4.7.6/mdb.min"
+  - else
+    = javascript_include_tag "mdb.min"
+  = javascript_include_tag "common"
   = yield :local_js
   javascript:
     #{flash_messages}

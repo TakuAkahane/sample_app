@@ -269,7 +269,7 @@ module FormHelper
         end
         @template.concat(
           select(attribute, options, edit_select_args(select_options),
-                 { class: 'trec-select md-form', id: original_id(attribute) }.merge(readonly ? args.merge(disabled: true, readonly: true) : args ))
+                 { class: 'mdb-select trec-select md-form', id: original_id(attribute) }.merge(readonly ? args.merge(disabled: true, readonly: true) : args ))
         )
         @template.concat(error_tag(attribute))
       end
