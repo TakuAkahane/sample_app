@@ -116,6 +116,11 @@ en:
   apartments: &apartments Apartments
   apartment_block: &apartment_block Apartment block
   commercial_building: &commercial_building Commercial Building
+  building_classification: &building_classification Building classification
+  preferred_property_price: &preferred_property_price Preferred property price
+  from: &from 'From'
+  to: &to 'To'
+  ten_thousand_yen: &ten_thousand_yen Ten thousand yen
 
   time:
     formats:

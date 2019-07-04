@@ -107,6 +107,28 @@ module FormHelper
       end
     end
 
+    def range_input_field(attribute, unit, min_or_max)
+      unit_string = min_or_max == :min ? I18n.t('from') : I18n.t('to')
+      @template.content_tag(:div, class: 'col-12 col-sm-6') do
+        @template.content_tag(:div, class: 'row') do
+          @template.concat(
+            @template.content_tag(:div, class: 'col-2 px-0') do
+              @template.concat(
+                @template.content_tag(:div, class: 'my-3') do
+                  @template.concat(@template.content_tag(:span, unit_string))
+                end
+              )
+            end
+          )
+          @template.concat(
+            @template.content_tag(:div, class: 'col-10 pl-0') do
+              text_field(attribute, { form_name: 'blank', line_class: 'mb-4' }, pick_target_class: 'text-right')
+            end
+          )
+        end
+      end
+    end
+
     #---------------------- 各種フィールド ----------------------#
     # テキストフィールド（form_nameが'blank'の場合、タイトル・項目名非表示）
     def text_field(attribute, label_args = {}, args = {})
@@ -330,6 +352,23 @@ module FormHelper
           render_radio_buttons(attribute, options, label_args, args)
         )
         @template.concat(error_tag(attribute))
+      end
+    end
+
+    def range_input_by_text(min_attribute, max_attribute, unit, label_args = {}, args = {})
+      required, form_name, readonly = extend_args(label_args)
+      label_class = label_class(label_args, 'active')
+      # タイトル
+      unless form_name == 'blank'
+        @template.concat(
+          label_for(form_name, required, form_name, label_class, true)
+        )
+      end
+      @template.content_tag(:div, class: line_class(label_args, 'mb-5 col-12 row')) do
+        # 下限値
+        @template.concat(range_input_field(min_attribute, unit, :min))
+        # 上限値
+        @template.concat(range_input_field(max_attribute, unit, :max))
       end
     end
 
