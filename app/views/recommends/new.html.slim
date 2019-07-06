@@ -6,4 +6,18 @@
           = f.multi_checkbox :building_classification, Recommend.building_classification.options(selected: @recommend.building_classification), {include_blank: 'please_select'}, {required: true}
         .col-6
           = f.single_dropdown_list :ward_id, Recommend.ward_id.options(selected: @recommend.ward_id), {include_blank: 'please_select'}, {required: true}
+      .row.px-3
+        .col-6
+          = f.text_field :gross_rate_of_return
+        .col-6
+          = f.single_dropdown_list :age_of_a_building, Recommend.age_of_a_building.options(selected: @recommend.age_of_a_building), {include_blank: 'please_select'}, {required: true}
+      .row.px-3
+        .col-6
+          = f.single_dropdown_list :time_to_nearest_station, Recommend.time_to_nearest_station.options(selected: @recommend.time_to_nearest_station), {include_blank: 'please_select'}, {required: true}
+        .col-6
+          = f.text_field :recommend_name
       = f.range_input_by_text :require_price_min, :require_price_max, t('ten_thousand_yen'), {required: true, form_name: 'preferred_property_price', label_class: 'font-middle mb-3', line_class: 'mb-0 col-12 row'}
+      = f.text_area :comment
+  .row.justify-content-md-center.mt-5
+    .col-12.col-md-4.mt-2
+      = f.button t('Regist'), type: 'submit', class: 'btn btn-deep-orange btn-block btn-lg font-extralarge'

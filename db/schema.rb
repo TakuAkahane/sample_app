@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_01_231044) do
+ActiveRecord::Schema.define(version: 2019_07_06_075318) do
 
   create_table "buy_investment_properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "property_name", null: false
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2019_07_01_231044) do
     t.string "time_to_nearest_station", null: false, comment: "最寄り駅までの時間"
     t.text "comment", comment: "コメント"
     t.string "recommend_name", limit: 30, default: "", null: false, comment: "レコメンド名"
+    t.string "age_of_a_building", limit: 100, null: false, comment: "築年数"
   end
 
   create_table "residential_property_search_conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

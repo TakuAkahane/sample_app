@@ -121,6 +121,23 @@ en:
   from: &from 'From'
   to: &to 'To'
   ten_thousand_yen: &ten_thousand_yen Ten thousand yen
+  gross_rate_of_return: &gross_rate_of_return Gross rate of return
+  within_five_years: &within_five_years Within 5 years
+  within_ten_years: &within_ten_years Within 10 years
+  within_fifteen_years: &within_fifteen_years Within 15 years
+  within_twenty_years: &within_twenty_years Within 20 years
+  within_twentyfive_years: &within_twentyfive_years Within 25 years
+  within_thirty_years: &within_thirty_years Within 30 years
+  more_than_thirty_years: &more_than_thirty_years More than 30 years
+  unspecified: &unspecified Unspecified
+  age_of_a_building: &age_of_a_building Age of a building
+  within_three_minutes: &within_three_minutes Within 3 minutes
+  within_five_minutes: &within_five_minutes Within 5 minutes
+  within_ten_minutes: &within_ten_minutes Within 10 minutes
+  within_fifteen_minutes: &within_fifteen_minutes Within 15 minutes
+  within_twenty_minutes: &within_twenty_minutes Within 20 minutes
+  recommend_name: &recommend_name Recommend name
+  comment: &comment Comment
 
   time:
     formats:
@@ -260,3 +277,19 @@ en:
         apartments: *replacement_with_property
         apartment_block: *apartment_block
         commercial_building: *commercial_building
+      age_of_a_building:
+        within_five_years: *within_five_years
+        within_ten_years: *within_ten_years
+        within_fifteen_years: *within_fifteen_years
+        within_twenty_years: *within_twenty_years
+        within_twentyfive_years: *within_twentyfive_years
+        within_thirty_years: *within_thirty_years
+        more_than_thirty_years: *more_than_thirty_years
+        unspecified: *unspecified
+      time_to_nearest_station:
+        within_three_minutes: *within_three_minutes
+        within_five_minutes: *within_five_minutes
+        within_ten_minutes: *within_ten_minutes
+        within_fifteen_minutes: *within_fifteen_minutes
+        within_twenty_minutes: *within_twenty_minutes
+        unspecified: *unspecified

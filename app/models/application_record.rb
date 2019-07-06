@@ -68,6 +68,19 @@ module BuildingClassification
   extend Enumerize
   enumerize :building_classification, in: %i[apartments apartment_block commercial_building], multiple: true
 end
+# 築年数
+module AgeOfABuilding
+  extend Enumerize
+  enumerize :age_of_a_building, in: %i[within_five_years within_ten_years within_fifteen_years
+                                       within_twenty_years within_twentyfive_years within_thirty_years
+                                       more_than_thirty_years unspecified], multiple: true
+end
+# 最寄り駅までの時間
+module TimeToNearestStation
+  extend Enumerize
+  enumerize :time_to_nearest_station, in: %i[within_three_minutes within_five_minutes within_ten_minutes
+                                             within_fifteen_minutes within_twenty_minutes unspecified], multiple: true
+end
 
 #----------------------------------------------------------------------------#
 # Activerecord 基底クラス
