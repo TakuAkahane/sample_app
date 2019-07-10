@@ -138,6 +138,11 @@ en:
   within_twenty_minutes: &within_twenty_minutes Within 20 minutes
   recommend_name: &recommend_name Recommend name
   comment: &comment Comment
+  reinforced_concrete: &reinforced_concrete Reinforced concrete
+  steel_reinforced: &steel_reinforced Steel reinforced
+  steel_framed: &steel_framed Steel framed
+  wooden: &wooden Wooden
+  building_structure: &building_structure Building structure
 
   time:
     formats:
@@ -292,4 +297,10 @@ en:
         within_ten_minutes: *within_ten_minutes
         within_fifteen_minutes: *within_fifteen_minutes
         within_twenty_minutes: *within_twenty_minutes
+        unspecified: *unspecified
+      building_structure:
+        reinforced_concrete: *reinforced_concrete
+        steel_reinforced: *steel_reinforced
+        steel_framed: *steel_framed
+        wooden: *wooden
         unspecified: *unspecified

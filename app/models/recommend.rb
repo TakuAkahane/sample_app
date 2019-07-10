@@ -7,10 +7,12 @@ class Recommend < ApplicationRecord
   include WardId
   include AgeOfABuilding
   include TimeToNearestStation
+  include BuildingStructure
 
   # 複数選択可能にするには、activerecord内で以下のserialize定義が必要
   serialize :building_classification, Array
   serialize :ward_id, Array
   serialize :AgeOfABuilding, Array
   serialize :TimeToNearestStation, Array
+  serialize :BuildingStructure, Array
 end

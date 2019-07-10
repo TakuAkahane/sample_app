@@ -81,6 +81,11 @@ module TimeToNearestStation
   enumerize :time_to_nearest_station, in: %i[within_three_minutes within_five_minutes within_ten_minutes
                                              within_fifteen_minutes within_twenty_minutes unspecified], multiple: true
 end
+# 物件の構造
+module BuildingStructure
+  extend Enumerize
+  enumerize :building_structure, in: %i[reinforced_concrete steel_reinforced steel_framed wooden unspecified], multiple: true
+end
 
 #----------------------------------------------------------------------------#
 # Activerecord 基底クラス
