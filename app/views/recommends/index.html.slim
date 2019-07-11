@@ -1,1 +1,17 @@
-= link_to manage_new_recommends_path, class: 'btn btn-lg btn-deep-orange m-0 font-middle'
+/* 新規登録ボタン
+.row
+  .md-form.col-12.mb-4
+    = link_to manage_new_recommends_path, class: 'btn btn-lg btn-deep-orange m-0 font-middle'
+      i.material-icons.font-extralarge.mr-3.vertical-sub
+        | insert_drive_file
+      span = t('regist_new_recommend')
+
+/* ヒットしたレコード数表示
+.row
+  .col-12
+    = hit_records(@recommends.total_entries.to_s(:delimited))
+
+/* レコード中身表示
+.row
+  - @recommends.each do |recommend|
+    = render partial: '/recommends/manage_summary', :locals => {recommend: recommend, attention: false}
