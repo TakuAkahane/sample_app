@@ -20,6 +20,7 @@ class RecommendsController < ApplicationController
   def index
     # TODO ユーザ別の機能を作るまで、暫定的にallで対応
     @recommends = Recommend.all.paginate(page: params[:page], per_page: 20)
+    render layout: 'two_column_side_search'
   end
 
   def detail
@@ -43,6 +44,7 @@ class RecommendsController < ApplicationController
     new_recommend.ward_id = convert_ward_id
     new_recommend.age_of_a_building = convert_age_of_a_building
     new_recommend.time_to_nearest_station = convert_time_to_nearest_station
+    new_recommend.gross_rate_of_return = convert_gross_rate_of_return
     new_recommend
   end
 
@@ -57,6 +59,10 @@ class RecommendsController < ApplicationController
 
   def convert_time_to_nearest_station
     recommend_params[:time_to_nearest_station].present? ? recommend_params[:time_to_nearest_station].split : []
+  end
+
+  def convert_gross_rate_of_return
+    recommend_params[:gross_rate_of_return].present? ? recommend_params[:gross_rate_of_return].split : []
   end
 
   def recommend_params

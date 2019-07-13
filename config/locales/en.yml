@@ -143,6 +143,17 @@ en:
   steel_framed: &steel_framed Steel framed
   wooden: &wooden Wooden
   building_structure: &building_structure Building structure
+  time_to_nearest_station: &time_to_nearest_station Time to nearest station
+  more_than_one: &more_than_one More than 1
+  more_than_two: &more_than_two More than 2
+  more_than_three: &more_than_three More than 3
+  more_than_four: &more_than_four More than 4
+  more_than_five: &more_than_five More than 5
+  more_than_six: &more_than_six More than 6
+  more_than_seven: &more_than_seven More than 7
+  more_than_eight: &more_than_eight More than 8
+  more_than_nine: &more_than_nine More than 9
+  more_than_ten: &more_than_ten More than 10
 
   time:
     formats:
@@ -304,3 +315,14 @@ en:
         steel_framed: *steel_framed
         wooden: *wooden
         unspecified: *unspecified
+      gross_rate_of_return:
+        more_than_one: *more_than_one
+        more_than_two: *more_than_two
+        more_than_three: *more_than_three
+        more_than_four: *more_than_four
+        more_than_five: *more_than_five
+        more_than_six: *more_than_six
+        more_than_seven: *more_than_seven
+        more_than_eight: *more_than_eight
+        more_than_nine: *more_than_nine
+        more_than_ten: *more_than_ten

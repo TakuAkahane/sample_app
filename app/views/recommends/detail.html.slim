@@ -1,0 +1,16 @@
+- breadcrumb :recommend, @recommend
+.card
+  .card-header.py-4
+    h2.font-extralarge.float-sm-left.mb-0
+      = @recommend
+
+    .text-right.nowrap
+      .d-inline-block[data-toggle='tooltip' title='display as text']
+        a.mdb-modal-form[data-toggle='modal' data-reference='#display_text_format' href='']
+          i.material-icons.pl-1.md-white.align-text-bottom
+            | file_copy
+
+  .card-body
+    = render partial: 'specific'
+    .mx-auto.float-right#res_uuid_text
+      | ID:#{@recommend.id}

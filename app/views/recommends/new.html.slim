@@ -8,7 +8,7 @@
           = f.single_dropdown_list :ward_id, Recommend.ward_id.options(selected: @recommend.ward_id), {include_blank: 'please_select'}, {required: true}
       .row.px-3
         .col-6
-          = f.text_field :gross_rate_of_return
+          = f.single_dropdown_list :gross_rate_of_return, Recommend.gross_rate_of_return.options(selected: @recommend.gross_rate_of_return), {include_blank: 'please_select'}, {required: true}
         .col-6
           = f.single_dropdown_list :age_of_a_building, Recommend.age_of_a_building.options(selected: @recommend.age_of_a_building), {include_blank: 'please_select'}, {required: true}
       .row.px-3

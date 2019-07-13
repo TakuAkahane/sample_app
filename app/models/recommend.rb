@@ -8,6 +8,7 @@ class Recommend < ApplicationRecord
   include AgeOfABuilding
   include TimeToNearestStation
   include BuildingStructure
+  include GrossRateOfReturn
 
   # 複数選択可能にするには、activerecord内で以下のserialize定義が必要
   serialize :building_classification, Array
@@ -15,4 +16,6 @@ class Recommend < ApplicationRecord
   serialize :AgeOfABuilding, Array
   serialize :TimeToNearestStation, Array
   serialize :BuildingStructure, Array
+  serialize :GrossRateOfReturn, Array
+
 end

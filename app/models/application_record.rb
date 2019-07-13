@@ -86,6 +86,13 @@ module BuildingStructure
   extend Enumerize
   enumerize :building_structure, in: %i[reinforced_concrete steel_reinforced steel_framed wooden unspecified], multiple: true
 end
+# 表面利回り
+module GrossRateOfReturn
+  extend Enumerize
+  enumerize :gross_rate_of_return, in: %i[more_than_one more_than_two more_than_three more_than_four more_than_five
+                                          more_than_six more_than_seven more_than_eight more_than_nine more_than_ten],
+                                          multiple: true
+end
 
 #----------------------------------------------------------------------------#
 # Activerecord 基底クラス
