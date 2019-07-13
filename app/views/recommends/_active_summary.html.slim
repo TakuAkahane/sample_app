@@ -4,7 +4,7 @@
       h5.mb-0.font-middle.float-left
         = recommend.recommend_name
       .float-right
-        = link_to user_facebook_omniauth_authorize_path, class: 'waves-effect btn btn-sm mb-3 px-0' do
+        = link_to manage_new_proposal_path(recommend.id), class: 'waves-effect btn btn-sm mb-3 px-0' do
           | #{t('msg.propose_porperty')}
 
     .card-content

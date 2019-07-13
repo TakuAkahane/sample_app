@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_06_075318) do
+ActiveRecord::Schema.define(version: 2019_07_13_080531) do
 
   create_table "buy_investment_properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "property_name", null: false
@@ -89,6 +89,16 @@ ActiveRecord::Schema.define(version: 2019_07_06_075318) do
   create_table "investment_property_search_conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "user_id", comment: "ユーザID"
     t.text "params", comment: "パラメータ"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "proposals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "proposing_user_parent_id", null: false, comment: "提案側ユーザID"
+    t.integer "receiving_user_parent_id", null: false, comment: "受領側ユーザID"
+    t.integer "recommend_id", null: false, comment: "レコメンドID"
+    t.integer "property_id", null: false, comment: "物件ID"
+    t.string "proposal_status", null: false, comment: "提案ステータス"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

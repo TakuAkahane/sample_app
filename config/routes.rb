@@ -30,6 +30,26 @@ Rails.application.routes.draw do
     end
   end
 
+  # 提案
+  resources :proposals, only: %i[] do
+    collection do
+      # 管理
+      get 'manage/index' => 'proposals#index'
+      post 'manage/create' => 'proposals#create'
+    end
+    member do
+      # 管理
+      get 'manage/new' => 'proposals#new'
+      get 'manage/view' => 'proposals#view'
+      get 'manage/edit' => 'proposals#edit'
+      patch 'manage/update' => 'proposals#update'
+      get 'manage/detail' => 'proposals#detail'
+      delete 'manage/delete' => 'proposals#delete'
+      # 検索
+      get :detail
+    end
+  end
+
   # お問い合わせ
   resources :contacts, only: %i[new] do
     collection do
