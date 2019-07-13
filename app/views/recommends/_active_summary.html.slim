@@ -1,0 +1,38 @@
+.col-12.col-md-6.col-xl4.d-flex
+  .card.mb-4.w-100.hoverable.d-block
+    .card-header class=(attention)
+      h5.mb-0.font-middle.float-left
+        = recommend.recommend_name
+      .float-right
+        = link_to user_facebook_omniauth_authorize_path, class: 'waves-effect btn btn-sm mb-3 px-0' do
+          | #{t('msg.propose_porperty')}
+
+    .card-content
+
+      p.text-right.company_name_class.mb-0 = t('company_name') + t('private')
+        span = 'aaa'
+      .clear
+        label.custom-grey-text.d-block.float-left #{t('updated_at')}
+        p.text-right = recommend.updated_at
+      // TODO: 見せ方暫定対応。項目検討。
+      // 区
+      .aaa
+        = t('required') + t('ward')
+        = recommend.ward_id
+      // 表面利回り
+      .bbb
+        = t('required') + t('gross_rate_of_return')
+        = recommend.gross_rate_of_return
+      // 物件種別
+      .ccc
+        = t('required') + t('building_classification')
+        = recommend.building_classification
+      // 物件の構造
+      .ddd
+        = t('required') + t('building_structure')
+        = recommend.building_structure
+
+    = link_to detail_recommend_path(recommend.id) do
+      .card-footer.text-center
+        span.bold
+          = t('browse_detail')

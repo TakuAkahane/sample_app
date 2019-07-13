@@ -1,2 +1,8 @@
-= link_to manage_new_recommends_path, class: 'btn btn-default btn-sm p-2 m-0'
-  = t('get_recommend')
+/* ヒットしたレコード数表示
+.row
+  .col-12
+    = hit_records(@recommends.total_entries.to_s(:delimited))
+
+.row
+  - @recommends.each do |recommend|
+    = render partial: 'recommends/active_summary', locals: {recommend: recommend, attention: false}

@@ -154,6 +154,7 @@ en:
   more_than_eight: &more_than_eight More than 8
   more_than_nine: &more_than_nine More than 9
   more_than_ten: &more_than_ten More than 10
+  ward: ward Ward
 
   time:
     formats:
@@ -187,6 +188,7 @@ en:
     please_contact_us: 'Please contact us'
     contact_finish_appreciate: 'Thank you for your inquiry.'
     contact_finish_info: 'We will send back a confirmation email automatically.<br/>If you have any other questions, please feel free to contact us.'
+    propose_porperty: 'Propose property'
 
   #---------------------- カラム自然言語定義 ----------------------#
   activerecord:

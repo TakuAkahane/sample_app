@@ -23,6 +23,12 @@ class RecommendsController < ApplicationController
     render layout: 'two_column_side_search'
   end
 
+  def active
+    # TODO ユーザ別の機能を作るまで、暫定的にallで対応
+    @recommends = Recommend.all.paginate(page: params[:page], per_page: 20)
+    render layout: 'two_column_side_search'
+  end
+
   def detail
     @recommend = Recommend.find(params[:id])
   end
@@ -31,10 +37,6 @@ class RecommendsController < ApplicationController
   end
 
   def delete
-  end
-
-  def active
-    render layout: 'two_column_side_search'
   end
 
   protected
