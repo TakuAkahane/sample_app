@@ -3,10 +3,9 @@ en:
   meta_tags:
     #---------------------- デフォルト設定 ----------------------#
     base:
-      site: "Tokyo Real Estate Commumnity"
-      description: "You can find best real estate in Tokyo"
+      site: "Real Estate Commumnity"
+      description: "You can find best real estate"
       keywords:
-        - Tokyo
         - Real Estate
     #---------------------- ページタイトル ----------------------#
     titles:

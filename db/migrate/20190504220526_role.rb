@@ -1,7 +1,7 @@
 class Role < ActiveRecord::Migration[5.2]
   def change
     setting = Setting.new
-    setting.site_title = 'Tokyo Real Estate Community'
+    setting.site_title = 'Real Estate Community'
     setting.maintenance_mode_flg = false
     setting.save!
 

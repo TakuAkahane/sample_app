@@ -26,7 +26,6 @@ Rails.application.config.assets.precompile += %w[*.ico *.eot *.woff *.ttf *.svg 
                                                  i18n.js
                                                  i18n/*.js
                                                  translations.js
-                                                 ja_JP.js
                                                  jquery.timepicker.min.js
                                                  jquery.datepair.min.js
                                                  jquery.matchHeight.js

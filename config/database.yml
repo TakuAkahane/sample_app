@@ -22,7 +22,7 @@ default: &default
 
 development:
   <<: *default
-  database: tokyo-real-estate-community_development
+  database: real-estate-community_development
   username: root
   password: root
   host: localhost
@@ -32,7 +32,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: tokyo-real-estate-community_test
+  database: real-estate-community_test
   username: root
   password: root
   host: localhost
@@ -58,7 +58,7 @@ test:
 #
 production:
   <<: *default
-  database: tokyo-real-estate-community_production
+  database: real-estate-community_production
   username: root
   password: root
   host: localhost

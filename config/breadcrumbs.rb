@@ -3,7 +3,7 @@
 
 crumb :root do
   link t('top').to_s, my_path if current_user.present?
-  link "#{t('tokyo_real_estate_community')}#{t('top')}", root_path if current_user.nil?
+  link "#{t('real_estate_community')}#{t('top')}", root_path if current_user.nil?
 end
 
 crumb :contacts do
