@@ -16,7 +16,7 @@ class AddDefaultToRoles < ActiveRecord::Migration[5.2]
     ]
 
     @roles.each do |role|
-      Trec::Role.create(role.merge(created_at: Time.now, updated_at: Time.now))
+      Rc::Role.create(role.merge(created_at: Time.now, updated_at: Time.now))
     end
   end
 end

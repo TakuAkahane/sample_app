@@ -15,8 +15,8 @@ class Contact < ApplicationRecord
 
   def inquirytype?
     case inquirytype
-    when 'about_trec'
-      I18n.t('about_trec')
+    when 'about_rc'
+      I18n.t('about_rc')
     when 'media_coverage'
       I18n.t('request_about_media_coverage')
     end

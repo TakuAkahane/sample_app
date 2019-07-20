@@ -7,7 +7,7 @@ module Roleable
   SNS_KEY = 'sns'
 
   def registration_roles_hash
-    Trec::Role.select(:id, :name).where(name: %w[light]).map { |role| [role.name, role.id] }.to_h
+    Rc::Role.select(:id, :name).where(name: %w[light]).map { |role| [role.name, role.id] }.to_h
   end
 
   def save_sessions_sns_registration

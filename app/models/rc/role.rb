@@ -1,7 +1,7 @@
 # encoding: utf-8
 # frozen_string_literal: true
 
-module Trec
+module Rc
   class Role < ApplicationRecord
     include TheRole::Api::Role
     include AccountType

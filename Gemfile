@@ -207,6 +207,8 @@ gem 'mime-types'
 gem 'rack-attack', '~> 5.0.1'
 gem 'whenever', '~> 0.10.0', :require => false
 
+gem 'rename'
+
 #------------- original -------------#
 # material design for bootstrap pro
-gem 'trecmdb', path: '../trecmdb'
+gem 'rcmdb', path: '../rcmdb'

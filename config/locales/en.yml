@@ -93,7 +93,7 @@ en:
   sub_account_user: &sub_account_user Sub account user
   contact_us: &contact_us Contact us
   resend_same_email: &resend_same_email Resend to same email address
-  about_trec: &about_trec About Real Estate Community
+  about_rc: &about_rc About Real Estate Community
   request_about_media_coverage: &request_about_media_coverage Request about media coverage
   top: &top Top
   real_estate_community: &real_estate_community Real Estate Community
@@ -273,7 +273,7 @@ en:
         sub_account_admin: *sub_account_admin
         sub_account_user: *sub_account_user
       inquirytype:
-        about_trec: *about_trec
+        about_rc: *about_rc
         media_coverage: *request_about_media_coverage
       relationship_with_property:
         holder: *holder

@@ -47,7 +47,7 @@ end
 # お問い合わせの種類
 module InquiryType
   extend Enumerize
-  enumerize :inquirytype, in: %i[about_trec media_coverage], multiple: false
+  enumerize :inquirytype, in: %i[about_rc media_coverage], multiple: false
 end
 # 物件との関係
 module RelationshipWithProperty

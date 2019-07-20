@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   #----------------------------------------------------------------------------#
 
   def registration_completed?
-    return if request.path.include?('trecadmin')
+    return if request.path.include?('rcadmin')
     # SNS認証のユーザ登録手続きが完了しているかどうかを確認するメソッド
     # ゲストは制御を戻す
     return unless user_signed_in?

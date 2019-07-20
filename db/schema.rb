@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 2019_07_13_080531) do
     t.string "building_structure", null: false, comment: "建物の構造"
     t.string "time_to_nearest_station", null: false, comment: "最寄り駅までの時間"
     t.text "comment", comment: "コメント"
-    t.string "recommend_name", limit: 30, default: "", null: false, comment: "レコメンド名"
+    t.string "recommend_name", limit: 30, null: false, comment: "レコメンド名"
     t.string "age_of_a_building", limit: 100, null: false, comment: "築年数"
   end
 
