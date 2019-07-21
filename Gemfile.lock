@@ -10,6 +10,14 @@ GIT
     elasticsearch-rails (5.1.0)
 
 PATH
+  remote: ../rcadmin
+  specs:
+    rcadmin (0.1.0)
+      rails (~> 5.2.2, >= 5.2.2.1)
+      rspec-rails
+      slim-rails
+
+PATH
   remote: ../rcmdb
   specs:
     rcmdb (0.1.0)
@@ -699,6 +707,7 @@ DEPENDENCIES
   rack-attack (~> 5.0.1)
   rails-assets-tether (~> 1.4.3)!
   rake-remote_task
+  rcadmin!
   rcmdb!
   redis
   rename

@@ -4,7 +4,7 @@ c73c5a468aa475b898e82409442debd6f3ff1d3a		branch '6.x' of https://github.com/ela
 6f0bb1ae104fc768fee7015d43ae946d9daf6aae		branch 'docker' of https://github.com/elastic/elasticsearch-rails
 e5d8bf926718df0177952496ae17096fffdb5c74		branch 'fix-travis' of https://github.com/elastic/elasticsearch-rails
 fb8bfd91f6f5f9c1473dd920738456bb1114bcdc		branch 'issues/107' of https://github.com/elastic/elasticsearch-rails
-f9e86dec7e90f5a334602e85dfffdcb69215c27c		branch 'master' of https://github.com/elastic/elasticsearch-rails
+8c407be4f2a06668ea02db9600e772b776be3521		branch 'master' of https://github.com/elastic/elasticsearch-rails
 91814b30380f5d7517e3a4dd845ff8932f2dd997		branch 'persistence' of https://github.com/elastic/elasticsearch-rails
 b21e959fb87c86680db4c164f1407f19588c1432		branch 'persistence-model' of https://github.com/elastic/elasticsearch-rails
 2f2c0fb7a25ece68fd3a9eec7b9026848e66fa4f		branch 'searchapp_dsl' of https://github.com/elastic/elasticsearch-rails

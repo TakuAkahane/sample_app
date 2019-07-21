@@ -232,4 +232,7 @@ Rails.application.routes.draw do
       post 'manage/create_account' => 'users#create'
     end
   end
+
+  # 本体側からシステム管理側の routing を呼び出す場合、 rcadmin.XXX にする
+  mount Rcadmin::Engine, at: '/rcadmin', as: 'rcadmin'
 end

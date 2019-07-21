@@ -212,3 +212,5 @@ gem 'rename'
 #------------- original -------------#
 # material design for bootstrap pro
 gem 'rcmdb', path: '../rcmdb'
+# administration console
+gem 'rcadmin', path: '../rcadmin'
